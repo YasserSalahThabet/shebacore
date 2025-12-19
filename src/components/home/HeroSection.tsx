@@ -28,8 +28,8 @@ export function HeroSection() {
           </div>
 
           {/* Headline */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 animate-fade-up delay-100">
-            Technology, <span className="text-destructive">Simplified.</span>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-up delay-100 text-destructive">
+            Technology, <span className="text-primary">Simplified.</span>
             <br />
             Power, <span className="text-primary">Delivered.</span>
           </h1>
