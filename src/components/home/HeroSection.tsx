@@ -2,15 +2,12 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Calendar } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
-
 export function HeroSection() {
-  return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBg})` }}
-      />
+      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
+      backgroundImage: `url(${heroBg})`
+    }} />
       
       {/* Gradient Overlays */}
       <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/50 to-background" />
@@ -32,7 +29,7 @@ export function HeroSection() {
 
           {/* Headline */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 animate-fade-up delay-100">
-            Technology, <span className="text-primary">Simplified.</span>
+            Technology, <span className="text-destructive">Simplified.</span>
             <br />
             Power, <span className="text-primary">Delivered.</span>
           </h1>
@@ -62,11 +59,9 @@ export function HeroSection() {
           <div className="mt-16 pt-8 border-t border-border/30 animate-fade-up delay-400">
             <p className="text-sm text-muted-foreground mb-4">Trusted by leading enterprises across industries</p>
             <div className="flex flex-wrap justify-center gap-8 opacity-50">
-              {["Healthcare", "Retail", "Logistics", "Hospitality", "Public Sector"].map((industry) => (
-                <span key={industry} className="text-sm font-medium text-foreground/60">
+              {["Healthcare", "Retail", "Logistics", "Hospitality", "Public Sector"].map(industry => <span key={industry} className="text-sm font-medium text-foreground/60">
                   {industry}
-                </span>
-              ))}
+                </span>)}
             </div>
           </div>
         </div>
@@ -78,6 +73,5 @@ export function HeroSection() {
           <div className="w-1 h-2 rounded-full bg-primary animate-pulse" />
         </div>
       </div>
-    </section>
-  );
+    </section>;
 }
