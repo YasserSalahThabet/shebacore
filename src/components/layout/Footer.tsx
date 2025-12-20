@@ -93,11 +93,11 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center gap-3 text-muted-foreground text-sm">
                 <Mail size={16} className="text-primary" />
-                <span>hello@shebacore.com</span>
+                <a href="mailto:info@shebacore.com" className="hover:text-primary transition-colors">info@shebacore.com</a>
               </li>
               <li className="flex items-center gap-3 text-muted-foreground text-sm">
                 <Phone size={16} className="text-primary" />
-                <span>+1 (800) SHEBA-CORE</span>
+                <a href="tel:+17603634466" className="hover:text-primary transition-colors">+1 (760) 363-4466</a>
               </li>
               <li className="flex items-start gap-3 text-muted-foreground text-sm">
                 <MapPin size={16} className="text-primary mt-0.5" />

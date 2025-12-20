@@ -205,7 +205,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground">Email</p>
-                      <p className="text-foreground">hello@shebacore.com</p>
+                      <a href="mailto:info@shebacore.com" className="text-foreground hover:text-primary transition-colors">info@shebacore.com</a>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
@@ -213,8 +213,8 @@ const Contact = () => {
                       <Phone className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground">Phone</p>
-                      <p className="text-foreground">+1 (800) SHEBA-CORE</p>
+                      <p className="text-sm text-muted-foreground">Phone / WhatsApp</p>
+                      <a href="tel:+17603634466" className="text-foreground hover:text-primary transition-colors">+1 (760) 363-4466</a>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
