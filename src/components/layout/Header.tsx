@@ -34,10 +34,16 @@ export function Header() {
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
-            <div className="relative">
-              <div className="w-10 h-10 rounded-lg flex items-center justify-center shadow-glow-sm group-hover:shadow-glow transition-all duration-300 bg-destructive">
-                <span className="text-primary-foreground font-bold text-xl">S</span>
-              </div>
+            <div className="w-12 h-12 relative group-hover:scale-105 transition-all duration-300">
+              <img 
+                src="/logo.png" 
+                alt="ShebaCore Logo" 
+                className="w-full h-full object-contain"
+                style={{ 
+                  filter: 'drop-shadow(0 0 8px hsl(0 84% 60% / 0.3))',
+                  mixBlendMode: 'multiply'
+                }}
+              />
             </div>
             <span className="text-xl font-bold text-foreground">
               Sheba<span className="text-destructive">Core</span>
