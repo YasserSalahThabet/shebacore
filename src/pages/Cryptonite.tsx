@@ -11,7 +11,7 @@ import {
   Bell, 
   Target,
   ArrowRight,
-  CheckCircle2
+  CheckCircle
 } from "lucide-react";
 
 const features = [
@@ -47,47 +47,6 @@ const features = [
   }
 ];
 
-const pricingPlans = [
-  {
-    name: "Starter",
-    price: "$49",
-    period: "/month",
-    description: "Perfect for beginners",
-    features: [
-      "Up to 10 signals/day",
-      "Basic analytics",
-      "Email notifications",
-      "1 trading pair"
-    ]
-  },
-  {
-    name: "Pro",
-    price: "$149",
-    period: "/month",
-    description: "For serious traders",
-    features: [
-      "Unlimited signals",
-      "Advanced analytics",
-      "All notification types",
-      "10 trading pairs",
-      "Priority support"
-    ],
-    popular: true
-  },
-  {
-    name: "Enterprise",
-    price: "Custom",
-    period: "",
-    description: "For institutions",
-    features: [
-      "Everything in Pro",
-      "Custom algorithms",
-      "Dedicated account manager",
-      "API access",
-      "White-label options"
-    ]
-  }
-];
 
 export default function Cryptonite() {
   return (
@@ -170,57 +129,61 @@ export default function Cryptonite() {
       {/* Pricing Section */}
       <section className="py-20">
         <div className="section-container">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Choose Your <span className="text-gradient">Trading Plan</span>
+              Lifetime <span className="text-gradient">Access</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Flexible pricing options to match your trading style and goals.
+              One-time payment. No recurring fees. Forever access.
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {pricingPlans.map((plan) => (
-              <Card 
-                key={plan.name}
-                className={`relative bg-card/50 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 ${
-                  plan.popular 
-                    ? 'border-primary shadow-lg shadow-primary/20' 
-                    : 'border-border/50 hover:border-primary/50'
-                }`}
-              >
-                {plan.popular && (
-                  <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground">
-                    Most Popular
-                  </Badge>
-                )}
-                <CardHeader className="text-center pb-2">
-                  <CardTitle className="text-2xl">{plan.name}</CardTitle>
-                  <CardDescription>{plan.description}</CardDescription>
-                  <div className="mt-4">
-                    <span className="text-4xl font-bold text-foreground">{plan.price}</span>
-                    <span className="text-muted-foreground">{plan.period}</span>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-3 mb-6">
-                    {plan.features.map((feature) => (
-                      <li key={feature} className="flex items-center gap-3 text-sm text-muted-foreground">
-                        <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  <Button 
-                    variant={plan.popular ? "hero" : "outline"} 
-                    className="w-full"
-                    asChild
-                  >
-                    <Link to="/contact">Get Started</Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="max-w-md mx-auto">
+            <Card className="relative bg-card/50 backdrop-blur-sm border-primary shadow-lg shadow-primary/20 overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-primary/60" />
+              <CardContent className="p-8 text-center">
+                <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium mb-6">
+                  <Zap className="h-4 w-4" />
+                  Best Value
+                </div>
+                
+                <div className="mb-6">
+                  <span className="text-5xl font-bold text-foreground">$49</span>
+                  <span className="text-muted-foreground ml-2">lifetime</span>
+                </div>
+                
+                <ul className="space-y-4 mb-8 text-left">
+                  <li className="flex items-center gap-3">
+                    <div className="h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                      <CheckCircle className="h-3 w-3 text-primary" />
+                    </div>
+                    <span className="text-foreground">Real-time Buy & Sell Signals</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <div className="h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                      <CheckCircle className="h-3 w-3 text-primary" />
+                    </div>
+                    <span className="text-foreground">Telegram Bot Connection</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <div className="h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                      <CheckCircle className="h-3 w-3 text-primary" />
+                    </div>
+                    <span className="text-foreground">Lifetime Updates & Support</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <div className="h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                      <CheckCircle className="h-3 w-3 text-primary" />
+                    </div>
+                    <span className="text-foreground">No Monthly Fees</span>
+                  </li>
+                </ul>
+                
+                <Button variant="hero" size="lg" className="w-full" asChild>
+                  <Link to="/contact">Get Lifetime Access</Link>
+                </Button>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
