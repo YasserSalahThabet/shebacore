@@ -10,8 +10,8 @@ import Partners from "./pages/Partners";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
+import Cryptonite from "./pages/Cryptonite";
 import NotFound from "./pages/NotFound";
-
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -24,6 +24,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/solutions" element={<Solutions />} />
+          <Route path="/cryptonite" element={<Cryptonite />} />
           <Route path="/partners" element={<Partners />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Privacy />} />
