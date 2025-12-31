@@ -13,7 +13,7 @@ const navigation = [{
   href: "/solutions"
 }, {
   name: "Cryptonite",
-  href: "/cryptonite"
+  <a href="/cryptonite/">Cryptonite</a>
 }, {
   name: "Partners",
   href: "/partners"
