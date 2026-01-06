@@ -83,7 +83,7 @@ export function Header() {
           {/* CTA Button */}
           <div className="hidden md:block">
             <Button variant="hero" size="lg" asChild>
-              <Link to="/contact#schedule">Get Started</Link>
+              <a href="https://cal.com/shebacore/discovery-call-shebacore" target="_blank" rel="noopener noreferrer">Get Started</a>
             </Button>
           </div>
 
@@ -130,12 +130,14 @@ export function Header() {
               )}
 
               <Button variant="hero" size="lg" className="mt-4" asChild>
-                <Link
-                  to="/contact#schedule"
+                <a
+                  href="https://cal.com/shebacore/discovery-call-shebacore"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Get Started
-                </Link>
+                </a>
               </Button>
             </div>
           </div>

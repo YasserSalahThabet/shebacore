@@ -42,10 +42,10 @@ export function HeroSection() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up delay-300">
             <Button variant="hero" size="xl" asChild>
-              <Link to="/contact" className="gap-3">
+              <a href="https://cal.com/shebacore/discovery-call-shebacore" target="_blank" rel="noopener noreferrer" className="gap-3">
                 <Calendar size={20} />
                 Schedule a Free Consultation
-              </Link>
+              </a>
             </Button>
             <Button variant="hero-outline" size="xl" asChild>
               <Link to="/solutions" className="gap-3">
