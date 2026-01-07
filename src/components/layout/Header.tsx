@@ -52,7 +52,7 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-8 ml-12">
             {navigation.map((item) =>
               item.external ? (
                 <a
@@ -70,7 +70,7 @@ export function Header() {
                   to={item.href}
                   className={`text-sm font-medium transition-colors animated-underline ${
                     location.pathname === item.href
-                      ? "text-primary"
+                      ? "text-foreground"
                       : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
@@ -119,7 +119,7 @@ export function Header() {
                     to={item.href}
                     className={`text-base font-medium py-2 transition-colors ${
                       location.pathname === item.href
-                        ? "text-primary"
+                        ? "text-foreground"
                         : "text-muted-foreground hover:text-foreground"
                     }`}
                     onClick={() => setIsMobileMenuOpen(false)}
