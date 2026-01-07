@@ -41,9 +41,9 @@ export function Header() {
           <Link to="/" className="flex items-center gap-2 group">
             <div className="w-10 h-10 relative group-hover:scale-105 transition-all duration-300">
               <img
-                src="/logo-hexagon.png?v=1"
+                src="/logo-hexagon.png?v=2"
                 alt="ShebaCore hexagon logo"
-                className="w-full h-full object-contain bg-transparent drop-shadow-[0_0_8px_hsl(0_84%_60%/0.4)]"
+                className="w-full h-full object-contain"
               />
             </div>
             <span className="text-xl font-bold text-foreground">
