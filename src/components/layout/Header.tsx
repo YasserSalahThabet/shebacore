@@ -39,7 +39,7 @@ export function Header() {
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 relative group-hover:scale-105 transition-all duration-300">
+            <div className="w-6 h-6 relative group-hover:scale-105 transition-all duration-300">
               <img
                 src="/logo-hexagon.png?v=2"
                 alt="ShebaCore hexagon logo"
