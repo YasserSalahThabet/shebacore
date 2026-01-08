@@ -3,8 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
-const CRYPTONITE_URL =
-  "https://cryptonite-y2ymjxmdwcivxmn6gn7blx.streamlit.app";
+const CRYPTONITE_URL = "https://cryptonite.shebacore.com";
 
 const navigation = [
   { name: "Home", href: "/" },
