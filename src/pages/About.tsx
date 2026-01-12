@@ -54,17 +54,9 @@ const About = () => {
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
                 Our <span className="text-primary">Story</span>
               </h2>
-              <div className="space-y-4 text-muted-foreground">
-                <p>
-                  ShebaCore was founded with a simple observation: businesses waste countless hours and resources navigating the complex technology landscape. With thousands of vendors, solutions, and pricing models, making the right technology decisions has become overwhelming.
-                </p>
-                <p>
-                  We created ShebaCore to be the trusted partner that every business deserves — one that understands your unique challenges and connects you with the perfect technology solutions, without the complexity or upfront consulting fees.
-                </p>
-                <p>
-                  Today, we serve businesses of all sizes across the United States, from ambitious startups to Fortune 500 enterprises, helping them build technology stacks that drive real results.
-                </p>
-              </div>
+              <p className="text-muted-foreground">
+                ShebaCore was founded by a technology professional with a passion for building practical, reliable solutions for small and growing businesses. Backed by a close-knit team of friends and collaborators with experience across different technology companies and disciplines, we combine real-world expertise with a hands-on approach. Our focus is simple: deliver clear, effective, and scalable technology solutions while providing an exceptional experience for every client. We believe small businesses deserve enterprise-level thinking, without the complexity.
+              </p>
             </div>
             <div className="glass-card p-8">
               <div className="grid grid-cols-2 gap-6">
