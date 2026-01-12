@@ -21,7 +21,7 @@ export function FloatingCTA() {
       href="https://cal.com/shebacore/discovery-call-shebacore"
       target="_blank"
       rel="noopener noreferrer"
-      className={`fixed bottom-6 right-6 z-50 transition-all duration-300 ${
+      className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 transition-all duration-300 ${
         isVisible
           ? "opacity-100 translate-y-0"
           : "opacity-0 translate-y-4 pointer-events-none"
@@ -29,8 +29,8 @@ export function FloatingCTA() {
     >
       <Button
         variant="hero"
-        size="lg"
-        className="gap-2 shadow-lg hover:shadow-xl"
+        size="default"
+        className="gap-2 shadow-lg hover:shadow-xl sm:h-12 sm:px-6 sm:text-base"
       >
         <Calendar size={18} />
         <span className="hidden sm:inline">Schedule a Call</span>
