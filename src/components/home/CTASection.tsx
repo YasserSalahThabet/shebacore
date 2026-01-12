@@ -13,10 +13,10 @@ export function CTASection() {
       <div className="section-container relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Let's Build Your <span className="text-primary">Technology Stack</span>
+            Your Technology, Built on a <span className="text-primary">Strong Core</span>
           </h2>
           <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
-            Ready to simplify your technology decisions? Schedule a free strategy call with our experts and discover how ShebaCore can transform your business.
+            Take the guesswork out of technology decisions. Book a free call with ShebaCore and let's build a reliable, scalable tech stack that truly supports your business.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
