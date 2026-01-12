@@ -8,6 +8,9 @@ import {
   Brain,
   Radio,
   ArrowRight,
+  ArrowRightLeft,
+  BarChart3,
+  ShoppingCart,
 } from "lucide-react";
 
 const solutions = [
@@ -52,6 +55,24 @@ const solutions = [
     title: "IoT & Smart Infrastructure",
     description: "Connect your physical assets with IoT sensors, surveillance systems, and smart building technology.",
     href: "/solutions#iot",
+  },
+  {
+    icon: ArrowRightLeft,
+    title: "Migration & Onboarding",
+    description: "Seamlessly transition to new platforms with expert-led migrations and structured onboarding programs.",
+    href: "/solutions#migration",
+  },
+  {
+    icon: BarChart3,
+    title: "Insights & Reporting",
+    description: "Turn data into action with dashboards, analytics, and custom reporting tailored to your business.",
+    href: "/solutions#insights",
+  },
+  {
+    icon: ShoppingCart,
+    title: "eCommerce",
+    description: "Launch and scale your online store with integrated payment, inventory, and fulfillment solutions.",
+    href: "/solutions#ecommerce",
   },
 ];
 
