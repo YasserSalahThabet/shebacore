@@ -19,13 +19,6 @@ export function HeroSection() {
       {/* Content */}
       <div className="relative z-10 section-container py-32 md:py-40">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8 animate-fade-up">
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="text-sm text-primary font-medium">
-              Zero Upfront Consulting Cost
-            </span>
-          </div>
 
           {/* Headline */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-up delay-100 text-destructive">
@@ -36,7 +29,7 @@ export function HeroSection() {
 
           {/* Sub-headline */}
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-fade-up delay-200">
-            ShebaCore connects businesses with best-in-class technology solutions — without complexity or upfront cost.
+            ShebaCore connects businesses with best-in-class technology solutions — without complexity.
           </p>
 
           {/* CTA Buttons */}
