@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { FloatingCTA } from "./FloatingCTA";
+import { WhatsAppButton } from "./WhatsAppButton";
 
 interface LayoutProps {
   children: ReactNode;
@@ -14,6 +15,7 @@ export function Layout({ children }: LayoutProps) {
       <main className="flex-1">{children}</main>
       <Footer />
       <FloatingCTA />
+      <WhatsAppButton />
     </div>
   );
 }
