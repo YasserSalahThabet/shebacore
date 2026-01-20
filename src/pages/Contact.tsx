@@ -224,6 +224,7 @@ const Contact = () => {
                     <div>
                       <p className="text-sm text-muted-foreground">Location</p>
                       <p className="text-foreground">United States</p>
+                      <p className="text-sm text-muted-foreground">Operating in Middle East • KSA Office</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">

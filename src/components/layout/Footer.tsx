@@ -101,7 +101,10 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-3 text-muted-foreground text-sm">
                 <MapPin size={16} className="text-primary mt-0.5" />
-                <span>United States</span>
+                <div className="flex flex-col">
+                  <span>United States</span>
+                  <span className="text-xs text-muted-foreground/70">Operating in Middle East • KSA Office</span>
+                </div>
               </li>
             </ul>
           </div>
