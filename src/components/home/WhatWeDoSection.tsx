@@ -1,3 +1,5 @@
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { Shield, Globe, Zap } from "lucide-react";
 
 const features = [
@@ -15,42 +17,52 @@ const features = [
   },
   {
     icon: Zap,
-    title: "Zero-Cost Consulting",
+    title: "AI-First Approach",
     description:
-      "Our expertise comes at no upfront cost to you. We're compensated by providers, ensuring aligned interests.",
+      "We identify where AI and automation can drive the biggest impact, then build it — fast.",
   },
 ];
 
 export function WhatWeDoSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   return (
-    <section className="py-24 md:py-32 bg-background">
-      <div className="section-container">
+    <section className="py-24 md:py-32 bg-card/50">
+      <div className="section-container" ref={ref}>
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mx-auto text-center mb-16"
+        >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
             What We <span className="text-primary">Do</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            ShebaCore is a US-based technology solutions and brokerage firm that helps businesses design, source, and implement the right technology stack — with expertise, not complexity.
+            ShebaCore is a US-based technology solutions firm operating in the Middle East, helping businesses design, source, and implement the right technology stack — with expertise, not complexity.
           </p>
-        </div>
+        </motion.div>
 
         {/* Features Grid */}
         <div className="grid md:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <div
+            <motion.div
               key={feature.title}
-              className="glass-card p-8 group hover:border-primary/30 transition-all duration-300"
-              style={{ animationDelay: `${index * 100}ms` }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="glass-card p-8 group hover:border-primary/30 hover:-translate-y-1 transition-all duration-300"
             >
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
                 <feature.icon className="w-7 h-7 text-primary" />
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-4">
                 {feature.title}
               </h3>
               <p className="text-muted-foreground">{feature.description}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

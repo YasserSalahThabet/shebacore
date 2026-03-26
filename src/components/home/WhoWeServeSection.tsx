@@ -1,3 +1,5 @@
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import {
   Building2,
   Store,
@@ -22,39 +24,55 @@ const industries = [
 ];
 
 export function WhoWeServeSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   return (
     <section className="py-24 md:py-32 bg-background">
-      <div className="section-container">
+      <div className="section-container" ref={ref}>
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mx-auto text-center mb-16"
+        >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
             Who We <span className="text-primary">Serve</span>
           </h2>
           <p className="text-lg text-muted-foreground">
             From startups to enterprises, we deliver tailored technology solutions across diverse industries.
           </p>
-        </div>
+        </motion.div>
 
         {/* Business Segments */}
         <div className="grid md:grid-cols-3 gap-6 mb-16">
-          {segments.map((segment) => (
-            <div
+          {segments.map((segment, index) => (
+            <motion.div
               key={segment.name}
-              className="glass-card p-8 text-center group hover:border-primary/30 transition-all duration-300"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="glass-card p-8 text-center group hover:border-primary/30 hover:-translate-y-1 transition-all duration-300"
             >
-              <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-colors">
+              <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
                 <segment.icon className="w-8 h-8 text-primary" />
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">
                 {segment.name}
               </h3>
               <p className="text-muted-foreground">{segment.description}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Industries */}
-        <div className="text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="text-center"
+        >
           <h3 className="text-xl font-semibold text-foreground mb-8">
             Industries We Specialize In
           </h3>
@@ -69,7 +87,7 @@ export function WhoWeServeSection() {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
