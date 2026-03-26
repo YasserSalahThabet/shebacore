@@ -1,4 +1,6 @@
+import { useRef } from "react";
 import { Link } from "react-router-dom";
+import { motion, useInView } from "framer-motion";
 import {
   ShieldCheck,
   Cloud,
@@ -77,41 +79,54 @@ const solutions = [
 ];
 
 export function SolutionsSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+
   return (
     <section className="py-24 md:py-32 bg-card/50">
-      <div className="section-container">
+      <div className="section-container" ref={ref}>
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mx-auto text-center mb-16"
+        >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
             Solutions We <span className="text-primary">Offer</span>
           </h2>
           <p className="text-lg text-muted-foreground">
             From cybersecurity to AI, we provide access to best-in-class technology solutions tailored to your business needs.
           </p>
-        </div>
+        </motion.div>
 
         {/* Solutions Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {solutions.map((solution, index) => (
-            <Link
+            <motion.div
               key={solution.title}
-              to={solution.href}
-              className="glass-card p-6 group hover:border-primary/30 transition-all duration-300 hover:-translate-y-1"
-              style={{ animationDelay: `${index * 50}ms` }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.4, delay: index * 0.05 }}
             >
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors">
-                <solution.icon className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-lg font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
-                {solution.title}
-              </h3>
-              <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
-                {solution.description}
-              </p>
-              <div className="flex items-center gap-2 text-primary text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-                Learn more <ArrowRight size={14} />
-              </div>
-            </Link>
+              <Link
+                to={solution.href}
+                className="glass-card p-6 group hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 block h-full"
+              >
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                  <solution.icon className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="text-lg font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
+                  {solution.title}
+                </h3>
+                <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
+                  {solution.description}
+                </p>
+                <div className="flex items-center gap-2 text-primary text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                  Learn more <ArrowRight size={14} />
+                </div>
+              </Link>
+            </motion.div>
           ))}
         </div>
       </div>
