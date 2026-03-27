@@ -86,6 +86,53 @@ export function HeroBackground() {
         />
       ))}
 
+      {/* 3D Hexagon — subtle logo echo */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <motion.div
+          className="relative"
+          style={{ perspective: "800px" }}
+          animate={{
+            rotateY: [0, 360],
+          }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        >
+          <motion.svg
+            width="280"
+            height="280"
+            viewBox="0 0 100 100"
+            className="opacity-[0.06]"
+            style={{
+              transformStyle: "preserve-3d",
+            }}
+            animate={{
+              rotateX: [0, 15, 0, -15, 0],
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            <polygon
+              points="50,3 93.3,25 93.3,75 50,97 6.7,75 6.7,25"
+              fill="none"
+              stroke="hsl(0 84% 60%)"
+              strokeWidth="1"
+            />
+            <polygon
+              points="50,15 82,32 82,68 50,85 18,68 18,32"
+              fill="none"
+              stroke="hsl(0 84% 60%)"
+              strokeWidth="0.5"
+            />
+          </motion.svg>
+        </motion.div>
+      </div>
+
       {/* Top-down gradient fade */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
     </>
