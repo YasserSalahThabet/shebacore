@@ -2,35 +2,12 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Calendar } from "lucide-react";
 import { motion } from "framer-motion";
-import heroBg from "@/assets/hero-bg.jpg";
+import { HeroBackground } from "./HeroBackground";
 
 export function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBg})` }}
-      />
-
-      {/* Gradient Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/50 to-background" />
-      <div className="absolute inset-0 bg-gradient-glow opacity-50" />
-
-      {/* Floating Accent Orbs */}
-      <motion.div
-        className="absolute top-1/4 left-[10%] w-72 h-72 rounded-full bg-primary/8 blur-3xl"
-        animate={{ y: [0, -30, 0], x: [0, 15, 0] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute bottom-1/3 right-[15%] w-96 h-96 rounded-full bg-primary/5 blur-3xl"
-        animate={{ y: [0, 20, 0], x: [0, -20, 0] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-      />
-
-      {/* Grid Pattern */}
-      <div className="absolute inset-0 grid-pattern opacity-10" />
+      <HeroBackground />
 
       {/* Content */}
       <div className="relative z-10 section-container py-32 md:py-40">
