@@ -90,44 +90,54 @@ export function HeroBackground() {
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <motion.div
           className="relative"
-          style={{ perspective: "800px" }}
+          style={{ perspective: "600px" }}
           animate={{
             rotateY: [0, 360],
           }}
           transition={{
-            duration: 30,
+            duration: 25,
             repeat: Infinity,
             ease: "linear",
           }}
         >
           <motion.svg
-            width="280"
-            height="280"
+            width="360"
+            height="360"
             viewBox="0 0 100 100"
-            className="opacity-[0.06]"
+            className="opacity-[0.12]"
             style={{
               transformStyle: "preserve-3d",
+              filter: "drop-shadow(0 0 20px hsl(0 84% 60% / 0.15))",
             }}
             animate={{
-              rotateX: [0, 15, 0, -15, 0],
+              rotateX: [0, 20, 0, -20, 0],
             }}
             transition={{
-              duration: 20,
+              duration: 16,
               repeat: Infinity,
               ease: "easeInOut",
             }}
           >
+            {/* Outer hexagon */}
             <polygon
               points="50,3 93.3,25 93.3,75 50,97 6.7,75 6.7,25"
-              fill="none"
+              fill="hsl(0 84% 60% / 0.03)"
               stroke="hsl(0 84% 60%)"
-              strokeWidth="1"
+              strokeWidth="1.2"
             />
+            {/* Mid hexagon */}
             <polygon
               points="50,15 82,32 82,68 50,85 18,68 18,32"
               fill="none"
-              stroke="hsl(0 84% 60%)"
-              strokeWidth="0.5"
+              stroke="hsl(0 84% 60% / 0.6)"
+              strokeWidth="0.7"
+            />
+            {/* Inner hexagon */}
+            <polygon
+              points="50,28 70,39 70,61 50,72 30,61 30,39"
+              fill="none"
+              stroke="hsl(0 84% 60% / 0.3)"
+              strokeWidth="0.4"
             />
           </motion.svg>
         </motion.div>
