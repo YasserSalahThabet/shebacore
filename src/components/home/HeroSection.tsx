@@ -80,9 +80,9 @@ export function HeroSection() {
             className="mt-16 pt-8 border-t border-border/30"
           >
             <div className="flex items-center justify-center gap-3 text-sm text-muted-foreground mb-4">
-              <span>🇺🇸 Based in the US</span>
+              <span>🇺🇸 US Based</span>
               <span className="w-1 h-1 rounded-full bg-muted-foreground/40" />
-              <span>🇸🇦 Now operating in KSA</span>
+              <span>🇸🇦 Now Operating in KSA</span>
             </div>
             <div className="flex flex-wrap justify-center gap-8 opacity-50">
               {["Healthcare", "Retail", "Logistics", "Hospitality", "Public Sector"].map(
