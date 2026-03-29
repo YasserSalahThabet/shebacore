@@ -86,83 +86,211 @@ export function HeroBackground() {
         />
       ))}
 
-      {/* 3D Hexagon — logo echo with circuit pattern */}
+      {/* AI-era digital hexagon with neural network */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <motion.div
           className="relative"
-          style={{ perspective: "600px" }}
-          animate={{
-            rotateY: [0, 360],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "linear",
-          }}
+          style={{ perspective: "800px" }}
+          animate={{ rotateY: [0, 360] }}
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
         >
           <motion.svg
-            width="380"
-            height="380"
-            viewBox="0 0 120 120"
-            className="opacity-[0.14]"
+            width="420"
+            height="420"
+            viewBox="0 0 200 200"
+            className="opacity-[0.12]"
             style={{
               transformStyle: "preserve-3d",
-              filter: "drop-shadow(0 0 25px hsl(0 84% 60% / 0.18))",
+              filter: "drop-shadow(0 0 30px hsl(0 84% 60% / 0.15))",
             }}
-            animate={{
-              rotateX: [0, 18, 0, -18, 0],
-            }}
-            transition={{
-              duration: 16,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
+            animate={{ rotateX: [0, 12, 0, -12, 0] }}
+            transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
           >
-            {/* Outer hexagon */}
+            <defs>
+              <linearGradient id="hexGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="hsl(0 84% 60%)" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="hsl(0 84% 60%)" stopOpacity="0.3" />
+              </linearGradient>
+              <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stopColor="hsl(0 84% 60%)" stopOpacity="0.9" />
+                <stop offset="100%" stopColor="hsl(0 84% 60%)" stopOpacity="0" />
+              </radialGradient>
+            </defs>
+
+            {/* Outer hexagon — shield frame */}
             <polygon
-              points="60,5 108,30 108,90 60,115 12,90 12,30"
-              fill="hsl(0 84% 60% / 0.03)"
-              stroke="hsl(0 84% 60%)"
-              strokeWidth="2"
-              strokeLinejoin="round"
-            />
-            {/* Inner hexagon border */}
-            <polygon
-              points="60,18 96,38 96,82 60,102 24,82 24,38"
+              points="100,8 178,35 178,165 100,192 22,165 22,35"
               fill="none"
-              stroke="hsl(0 84% 60% / 0.7)"
+              stroke="url(#hexGrad)"
               strokeWidth="1.5"
               strokeLinejoin="round"
             />
 
-            {/* Circuit lines — horizontal bars */}
-            <line x1="30" y1="48" x2="90" y2="48" stroke="hsl(0 84% 60% / 0.6)" strokeWidth="1.2" />
-            <line x1="28" y1="60" x2="92" y2="60" stroke="hsl(0 84% 60% / 0.6)" strokeWidth="1.2" />
-            <line x1="30" y1="72" x2="90" y2="72" stroke="hsl(0 84% 60% / 0.6)" strokeWidth="1.2" />
+            {/* Mid hexagon */}
+            <polygon
+              points="100,28 160,48 160,152 100,172 40,152 40,48"
+              fill="hsl(0 84% 60% / 0.02)"
+              stroke="hsl(0 84% 60% / 0.4)"
+              strokeWidth="1"
+              strokeLinejoin="round"
+              strokeDasharray="4 3"
+            />
 
-            {/* Circuit lines — vertical connectors */}
-            <line x1="45" y1="42" x2="45" y2="78" stroke="hsl(0 84% 60% / 0.5)" strokeWidth="1" />
-            <line x1="60" y1="38" x2="60" y2="82" stroke="hsl(0 84% 60% / 0.5)" strokeWidth="1" />
-            <line x1="75" y1="42" x2="75" y2="78" stroke="hsl(0 84% 60% / 0.5)" strokeWidth="1" />
+            {/* Inner hexagon — core */}
+            <polygon
+              points="100,55 135,70 135,130 100,145 65,130 65,70"
+              fill="hsl(0 84% 60% / 0.04)"
+              stroke="hsl(0 84% 60% / 0.6)"
+              strokeWidth="1.2"
+              strokeLinejoin="round"
+            />
 
-            {/* Circuit nodes */}
+            {/* Neural network connections from center to mid-ring */}
+            {/* Center node at 100,100 connects outward */}
             {[
-              [45, 48], [60, 48], [75, 48],
-              [35, 60], [52, 60], [68, 60], [85, 60],
-              [45, 72], [60, 72], [75, 72],
-              [45, 42], [75, 42],
-              [45, 78], [75, 78],
-            ].map(([cx, cy], i) => (
-              <circle
-                key={i}
-                cx={cx}
-                cy={cy}
-                r="2.2"
-                fill="hsl(0 84% 60% / 0.25)"
-                stroke="hsl(0 84% 60% / 0.7)"
+              [100, 55], [135, 70], [135, 130], [100, 145], [65, 130], [65, 70],
+            ].map(([x, y], i) => (
+              <line
+                key={`center-${i}`}
+                x1={100}
+                y1={100}
+                x2={x}
+                y2={y}
+                stroke="hsl(0 84% 60% / 0.3)"
                 strokeWidth="0.8"
               />
             ))}
+
+            {/* Mid-ring to outer-ring neural links */}
+            {[
+              [[100, 55], [100, 28]],
+              [[135, 70], [160, 48]],
+              [[135, 130], [160, 152]],
+              [[100, 145], [100, 172]],
+              [[65, 130], [40, 152]],
+              [[65, 70], [40, 48]],
+            ].map(([[x1, y1], [x2, y2]], i) => (
+              <line
+                key={`outer-${i}`}
+                x1={x1}
+                y1={y1}
+                x2={x2}
+                y2={y2}
+                stroke="hsl(0 84% 60% / 0.2)"
+                strokeWidth="0.6"
+                strokeDasharray="3 4"
+              />
+            ))}
+
+            {/* Cross-connections on inner hex (mesh network feel) */}
+            {[
+              [[100, 55], [135, 130]],
+              [[100, 55], [65, 130]],
+              [[135, 70], [65, 130]],
+              [[65, 70], [135, 130]],
+              [[135, 70], [100, 145]],
+              [[65, 70], [100, 145]],
+            ].map(([[x1, y1], [x2, y2]], i) => (
+              <line
+                key={`mesh-${i}`}
+                x1={x1}
+                y1={y1}
+                x2={x2}
+                y2={y2}
+                stroke="hsl(0 84% 60% / 0.08)"
+                strokeWidth="0.5"
+              />
+            ))}
+
+            {/* Data pulse rings around center */}
+            {[18, 30].map((r, i) => (
+              <circle
+                key={`ring-${i}`}
+                cx={100}
+                cy={100}
+                r={r}
+                fill="none"
+                stroke="hsl(0 84% 60% / 0.1)"
+                strokeWidth="0.5"
+                strokeDasharray="2 6"
+              />
+            ))}
+
+            {/* Center core node */}
+            <circle cx={100} cy={100} r="5" fill="url(#nodeGlow)" />
+            <circle
+              cx={100}
+              cy={100}
+              r="3"
+              fill="hsl(0 84% 60% / 0.5)"
+              stroke="hsl(0 84% 60% / 0.8)"
+              strokeWidth="0.8"
+            />
+
+            {/* Inner hex vertex nodes */}
+            {[
+              [100, 55], [135, 70], [135, 130], [100, 145], [65, 130], [65, 70],
+            ].map(([cx, cy], i) => (
+              <g key={`inner-node-${i}`}>
+                <circle cx={cx} cy={cy} r="3.5" fill="url(#nodeGlow)" opacity="0.5" />
+                <circle
+                  cx={cx}
+                  cy={cy}
+                  r="2.2"
+                  fill="hsl(0 84% 60% / 0.35)"
+                  stroke="hsl(0 84% 60% / 0.7)"
+                  strokeWidth="0.7"
+                />
+              </g>
+            ))}
+
+            {/* Mid hex vertex nodes — smaller */}
+            {[
+              [100, 28], [160, 48], [160, 152], [100, 172], [40, 152], [40, 48],
+            ].map(([cx, cy], i) => (
+              <circle
+                key={`mid-node-${i}`}
+                cx={cx}
+                cy={cy}
+                r="1.5"
+                fill="hsl(0 84% 60% / 0.25)"
+                stroke="hsl(0 84% 60% / 0.5)"
+                strokeWidth="0.5"
+              />
+            ))}
+
+            {/* Outer hex vertex nodes — smallest */}
+            {[
+              [100, 8], [178, 35], [178, 165], [100, 192], [22, 165], [22, 35],
+            ].map(([cx, cy], i) => (
+              <circle
+                key={`outer-node-${i}`}
+                cx={cx}
+                cy={cy}
+                r="1.8"
+                fill="hsl(0 84% 60% / 0.15)"
+                stroke="hsl(0 84% 60% / 0.35)"
+                strokeWidth="0.5"
+              />
+            ))}
+
+            {/* Lock/shield icon in center — security symbol */}
+            <rect
+              x="95"
+              y="96"
+              width="10"
+              height="8"
+              rx="1.5"
+              fill="none"
+              stroke="hsl(0 84% 60% / 0.7)"
+              strokeWidth="0.8"
+            />
+            <path
+              d="M97.5,96 V93.5 A2.5,2.5 0 0 1 102.5,93.5 V96"
+              fill="none"
+              stroke="hsl(0 84% 60% / 0.7)"
+              strokeWidth="0.8"
+            />
           </motion.svg>
         </motion.div>
       </div>
