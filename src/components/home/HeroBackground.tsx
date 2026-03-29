@@ -86,7 +86,7 @@ export function HeroBackground() {
         />
       ))}
 
-      {/* 3D Hexagon — subtle logo echo */}
+      {/* 3D Hexagon — logo echo with circuit pattern */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <motion.div
           className="relative"
@@ -101,16 +101,16 @@ export function HeroBackground() {
           }}
         >
           <motion.svg
-            width="360"
-            height="360"
-            viewBox="0 0 100 100"
-            className="opacity-[0.12]"
+            width="380"
+            height="380"
+            viewBox="0 0 120 120"
+            className="opacity-[0.14]"
             style={{
               transformStyle: "preserve-3d",
-              filter: "drop-shadow(0 0 20px hsl(0 84% 60% / 0.15))",
+              filter: "drop-shadow(0 0 25px hsl(0 84% 60% / 0.18))",
             }}
             animate={{
-              rotateX: [0, 20, 0, -20, 0],
+              rotateX: [0, 18, 0, -18, 0],
             }}
             transition={{
               duration: 16,
@@ -120,25 +120,49 @@ export function HeroBackground() {
           >
             {/* Outer hexagon */}
             <polygon
-              points="50,3 93.3,25 93.3,75 50,97 6.7,75 6.7,25"
+              points="60,5 108,30 108,90 60,115 12,90 12,30"
               fill="hsl(0 84% 60% / 0.03)"
               stroke="hsl(0 84% 60%)"
-              strokeWidth="1.2"
+              strokeWidth="2"
+              strokeLinejoin="round"
             />
-            {/* Mid hexagon */}
+            {/* Inner hexagon border */}
             <polygon
-              points="50,15 82,32 82,68 50,85 18,68 18,32"
+              points="60,18 96,38 96,82 60,102 24,82 24,38"
               fill="none"
-              stroke="hsl(0 84% 60% / 0.6)"
-              strokeWidth="0.7"
+              stroke="hsl(0 84% 60% / 0.7)"
+              strokeWidth="1.5"
+              strokeLinejoin="round"
             />
-            {/* Inner hexagon */}
-            <polygon
-              points="50,28 70,39 70,61 50,72 30,61 30,39"
-              fill="none"
-              stroke="hsl(0 84% 60% / 0.3)"
-              strokeWidth="0.4"
-            />
+
+            {/* Circuit lines — horizontal bars */}
+            <line x1="30" y1="48" x2="90" y2="48" stroke="hsl(0 84% 60% / 0.6)" strokeWidth="1.2" />
+            <line x1="28" y1="60" x2="92" y2="60" stroke="hsl(0 84% 60% / 0.6)" strokeWidth="1.2" />
+            <line x1="30" y1="72" x2="90" y2="72" stroke="hsl(0 84% 60% / 0.6)" strokeWidth="1.2" />
+
+            {/* Circuit lines — vertical connectors */}
+            <line x1="45" y1="42" x2="45" y2="78" stroke="hsl(0 84% 60% / 0.5)" strokeWidth="1" />
+            <line x1="60" y1="38" x2="60" y2="82" stroke="hsl(0 84% 60% / 0.5)" strokeWidth="1" />
+            <line x1="75" y1="42" x2="75" y2="78" stroke="hsl(0 84% 60% / 0.5)" strokeWidth="1" />
+
+            {/* Circuit nodes */}
+            {[
+              [45, 48], [60, 48], [75, 48],
+              [35, 60], [52, 60], [68, 60], [85, 60],
+              [45, 72], [60, 72], [75, 72],
+              [45, 42], [75, 42],
+              [45, 78], [75, 78],
+            ].map(([cx, cy], i) => (
+              <circle
+                key={i}
+                cx={cx}
+                cy={cy}
+                r="2.2"
+                fill="hsl(0 84% 60% / 0.25)"
+                stroke="hsl(0 84% 60% / 0.7)"
+                strokeWidth="0.8"
+              />
+            ))}
           </motion.svg>
         </motion.div>
       </div>
