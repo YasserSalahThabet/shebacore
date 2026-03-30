@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "http://shebacore.com/:path*",
+      "destination": "https://shebacore.com/:path*",
+      "permanent": true
+    }
+  ]
+}
