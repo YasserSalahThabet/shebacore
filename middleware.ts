@@ -104,23 +104,25 @@ function redirectToLogin(request: Request, error = false) {
 }
 
 function redirectWithSession(request: Request, next: string, token: string) {
-  const response = Response.redirect(new URL(next, request.url), 303);
-  response.headers.append(
-    "Set-Cookie",
-    `${SESSION_COOKIE}=${encodeURIComponent(token)}; Path=/; Max-Age=${SESSION_MAX_AGE}; HttpOnly; Secure; SameSite=Strict`
-  );
-  response.headers.set("Cache-Control", "no-store");
-  return response;
+  return new Response(null, {
+    status: 303,
+    headers: {
+      "Cache-Control": "no-store",
+      "Location": new URL(next, request.url).toString(),
+      "Set-Cookie": `${SESSION_COOKIE}=${encodeURIComponent(token)}; Path=/; Max-Age=${SESSION_MAX_AGE}; HttpOnly; Secure; SameSite=Strict`,
+    },
+  });
 }
 
 function logout(request: Request) {
-  const response = Response.redirect(new URL(LOGIN_PATH, request.url), 303);
-  response.headers.append(
-    "Set-Cookie",
-    `${SESSION_COOKIE}=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Strict`
-  );
-  response.headers.set("Cache-Control", "no-store");
-  return response;
+  return new Response(null, {
+    status: 303,
+    headers: {
+      "Cache-Control": "no-store",
+      "Location": new URL(LOGIN_PATH, request.url).toString(),
+      "Set-Cookie": `${SESSION_COOKIE}=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Strict`,
+    },
+  });
 }
 
 export default async function middleware(request: Request) {
