@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import {
   Bot,
   Briefcase,
+  CreditCard,
   ExternalLink,
   LayoutDashboard,
   Settings,
@@ -17,6 +18,7 @@ interface AdminShellProps {
 
 const adminLinks = [
   { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
+  { label: "Deal Desk", href: "/admin/deals", icon: CreditCard },
   { label: "AI Console", href: "/admin/ai", icon: Bot },
   { label: "Partners", href: "/admin#partners", icon: Briefcase },
   { label: "Settings", href: "/admin#settings", icon: Settings },
