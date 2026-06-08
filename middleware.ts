@@ -8,7 +8,6 @@ const LOGIN_PATH = "/admin-login";
 const LOGOUT_PATH = "/admin-logout";
 const SESSION_COOKIE = "shebacore_admin_session";
 const SESSION_MAX_AGE = 60 * 60 * 8;
-const SESSION_SALT = "shebacore-admin-session-v1";
 
 export const config = {
   matcher: ["/admin", "/admin/:path*", "/admin-login", "/admin-logout"],
@@ -69,16 +68,8 @@ function timingSafeEqual(a: string, b: string) {
   return result === 0;
 }
 
-async function sha256(value: string) {
-  const data = new TextEncoder().encode(value);
-  const hash = await crypto.subtle.digest("SHA-256", data);
-  return Array.from(new Uint8Array(hash))
-    .map((byte) => byte.toString(16).padStart(2, "0"))
-    .join("");
-}
-
-async function expectedSessionToken(username: string, password: string) {
-  return sha256(`${username.toLowerCase()}:${password}:${SESSION_SALT}`);
+function sessionToken(username: string, password: string) {
+  return btoa(`${username.toLowerCase()}:${password}`).replace(/=+$/g, "");
 }
 
 function getCookie(request: Request, name: string) {
@@ -103,29 +94,32 @@ function redirectToLogin(request: Request, error = false) {
   return Response.redirect(url, 302);
 }
 
-function redirectWithSession(request: Request, next: string, token: string) {
+function redirectWithCookie(location: URL, cookie: string) {
   return new Response(null, {
     status: 303,
-    headers: {
+    headers: new Headers({
       "Cache-Control": "no-store",
-      "Location": new URL(next, request.url).toString(),
-      "Set-Cookie": `${SESSION_COOKIE}=${encodeURIComponent(token)}; Path=/; Max-Age=${SESSION_MAX_AGE}; HttpOnly; Secure; SameSite=Strict`,
-    },
+      "Location": location.toString(),
+      "Set-Cookie": cookie,
+    }),
   });
+}
+
+function redirectWithSession(request: Request, next: string, token: string) {
+  return redirectWithCookie(
+    new URL(next, request.url),
+    `${SESSION_COOKIE}=${encodeURIComponent(token)}; Path=/; Max-Age=${SESSION_MAX_AGE}; HttpOnly; Secure; SameSite=Strict`
+  );
 }
 
 function logout(request: Request) {
-  return new Response(null, {
-    status: 303,
-    headers: {
-      "Cache-Control": "no-store",
-      "Location": new URL(LOGIN_PATH, request.url).toString(),
-      "Set-Cookie": `${SESSION_COOKIE}=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Strict`,
-    },
-  });
+  return redirectWithCookie(
+    new URL(LOGIN_PATH, request.url),
+    `${SESSION_COOKIE}=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Strict`
+  );
 }
 
-export default async function middleware(request: Request) {
+export default function middleware(request: Request) {
   const expectedUser = cleanEnvValue(process.env[USER_ENV]);
   const expectedPassword = cleanEnvValue(process.env[PASSWORD_ENV]);
 
@@ -134,10 +128,10 @@ export default async function middleware(request: Request) {
   }
 
   const url = new URL(request.url);
-  const expectedToken = await expectedSessionToken(expectedUser, expectedPassword);
-  const sessionToken = getCookie(request, SESSION_COOKIE);
+  const expectedToken = sessionToken(expectedUser, expectedPassword);
+  const currentToken = getCookie(request, SESSION_COOKIE);
   const hasValidSession = Boolean(
-    sessionToken && timingSafeEqual(sessionToken, expectedToken)
+    currentToken && timingSafeEqual(currentToken, expectedToken)
   );
 
   if (url.pathname === LOGOUT_PATH) {
@@ -146,21 +140,22 @@ export default async function middleware(request: Request) {
 
   if (url.pathname === LOGIN_PATH) {
     if (request.method === "POST") {
-      const form = await request.formData();
-      const username = String(form.get("username") ?? "").trim();
-      const password = String(form.get("password") ?? "").trim();
-      const next = safeNextPath(form.get("next"));
-      const validUser = timingSafeEqual(username.toLowerCase(), expectedUser.toLowerCase());
-      const validPassword = timingSafeEqual(password, expectedPassword);
+      return request.formData().then((form) => {
+        const username = String(form.get("username") ?? "").trim();
+        const password = String(form.get("password") ?? "").trim();
+        const next = safeNextPath(form.get("next"));
+        const validUser = timingSafeEqual(username.toLowerCase(), expectedUser.toLowerCase());
+        const validPassword = timingSafeEqual(password, expectedPassword);
 
-      if (validUser && validPassword) {
-        return redirectWithSession(request, next, expectedToken);
-      }
+        if (validUser && validPassword) {
+          return redirectWithSession(request, next, expectedToken);
+        }
 
-      const redirectUrl = new URL(LOGIN_PATH, request.url);
-      redirectUrl.searchParams.set("error", "1");
-      redirectUrl.searchParams.set("next", next);
-      return Response.redirect(redirectUrl, 303);
+        const redirectUrl = new URL(LOGIN_PATH, request.url);
+        redirectUrl.searchParams.set("error", "1");
+        redirectUrl.searchParams.set("next", next);
+        return Response.redirect(redirectUrl, 303);
+      });
     }
 
     if (hasValidSession) {
