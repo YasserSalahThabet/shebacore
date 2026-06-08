@@ -78,7 +78,7 @@ async function sha256(value: string) {
 }
 
 async function expectedSessionToken(username: string, password: string) {
-  return sha256(`${username}:${password}:${SESSION_SALT}`);
+  return sha256(`${username.toLowerCase()}:${password}:${SESSION_SALT}`);
 }
 
 function getCookie(request: Request, name: string) {
@@ -148,7 +148,7 @@ export default async function middleware(request: Request) {
       const username = String(form.get("username") ?? "").trim();
       const password = String(form.get("password") ?? "").trim();
       const next = safeNextPath(form.get("next"));
-      const validUser = timingSafeEqual(username, expectedUser);
+      const validUser = timingSafeEqual(username.toLowerCase(), expectedUser.toLowerCase());
       const validPassword = timingSafeEqual(password, expectedPassword);
 
       if (validUser && validPassword) {
