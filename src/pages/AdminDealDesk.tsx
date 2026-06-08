@@ -8,7 +8,6 @@ import {
   Briefcase,
   CheckCircle2,
   Clock3,
-  Copy,
   CreditCard,
   Eye,
   FileText,
@@ -78,17 +77,17 @@ const contractTemplateSections = [
 ];
 
 const contractSteps = [
-  "Upload the ShebaCore letterhead once and use it as the default contract base",
-  "Fill client, project, price, scope, and payment terms",
-  "Generate a contract preview before sending",
-  "Send signing link through DocuSeal and track signed status",
+  "Current: select a letterhead file and confirm the template structure",
+  "Next: store the letterhead securely so it stays saved after refresh",
+  "Next: generate contract PDF previews from client and scope text",
+  "Next: send signing links through DocuSeal and track signed status",
 ];
 
 const paymentSteps = [
-  "Choose client and project",
-  "Enter amount, currency, description, and due date",
-  "Generate provider payment link from a secure backend",
-  "Send by WhatsApp or email and track paid/overdue",
+  "Current: plan payment-link workflow and message structure",
+  "Next: choose Moyasar or PayTabs as the payment provider",
+  "Next: generate provider payment links from a secure backend",
+  "Next: send by WhatsApp or email and track paid/overdue",
 ];
 
 const agents = [
@@ -132,6 +131,13 @@ const nextBuild = [
   "Connect Sheba AI to these records so it can draft messages and actions with context.",
 ];
 
+const ComingNextButton = ({ icon: Icon, label }: { icon: typeof Save; label: string }) => (
+  <Button variant="hero-outline" className="gap-2 opacity-60" disabled>
+    <Icon className="h-4 w-4" />
+    {label}
+  </Button>
+);
+
 const AdminDealDesk = () => {
   const [selectedLetterhead, setSelectedLetterhead] = useState("No letterhead selected");
 
@@ -170,17 +176,12 @@ const AdminDealDesk = () => {
                   <ShieldCheck className="h-5 w-5" />
                 </div>
                 <div>
-                  <h2 className="font-semibold text-foreground">Safe first version</h2>
-                  <p className="text-sm text-muted-foreground">No payment or signing keys in the frontend.</p>
+                  <h2 className="font-semibold text-foreground">Working now</h2>
+                  <p className="text-sm text-muted-foreground">You can select a letterhead file and review the planned workflow.</p>
                 </div>
               </div>
-              <div className="grid gap-3 sm:grid-cols-2">
-                <Button variant="hero" asChild>
-                  <a href="#payment-links">Plan payment link</a>
-                </Button>
-                <Button variant="hero-outline" asChild>
-                  <a href="#contract-template">Plan contract</a>
-                </Button>
+              <div className="rounded-lg border border-border/60 bg-secondary/20 p-4 text-sm leading-6 text-muted-foreground">
+                Buttons marked as coming next are intentionally disabled until storage, PDF generation, DocuSeal, and payment APIs are connected.
               </div>
             </div>
           </div>
@@ -207,6 +208,88 @@ const AdminDealDesk = () => {
                 </div>
               );
             })}
+          </div>
+
+          <div id="contract-template" className="glass-card scroll-mt-28 p-6 md:p-8">
+            <div className="mb-6 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+              <div>
+                <div className="mb-3 inline-flex items-center gap-2 text-sm font-semibold text-primary">
+                  <FileUp className="h-4 w-4" />
+                  Contract template
+                </div>
+                <h2 className="text-2xl font-bold text-foreground">Default Letterhead and Contract Text</h2>
+                <p className="mt-2 max-w-2xl text-sm leading-6 text-muted-foreground">
+                  This section currently lets you select a letterhead and confirm the reusable contract blocks. Saving and generating contracts comes in the backend step.
+                </p>
+              </div>
+              <Button variant="hero" asChild>
+                <Link to="/admin/ai">Ask Contract Agent</Link>
+              </Button>
+            </div>
+
+            <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+              <div className="rounded-lg border border-border/60 bg-secondary/20 p-5">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                    <Upload className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-foreground">Default letterhead</h3>
+                    <p className="text-xs text-muted-foreground">PDF, DOCX, PNG, or JPG</p>
+                  </div>
+                </div>
+
+                <label
+                  htmlFor="letterhead-upload"
+                  className="flex min-h-40 cursor-pointer flex-col items-center justify-center rounded-lg border border-dashed border-primary/40 bg-background/40 p-6 text-center transition-colors hover:border-primary hover:bg-primary/5"
+                >
+                  <FileUp className="mb-3 h-8 w-8 text-primary" />
+                  <span className="text-sm font-semibold text-foreground">Choose ShebaCore letterhead</span>
+                  <span className="mt-2 text-xs leading-5 text-muted-foreground">
+                    This browser-only step confirms the selected file. It will not stay saved after refresh until storage is connected.
+                  </span>
+                </label>
+                <input
+                  id="letterhead-upload"
+                  type="file"
+                  accept=".pdf,.doc,.docx,.png,.jpg,.jpeg"
+                  className="sr-only"
+                  onChange={(event) => {
+                    setSelectedLetterhead(event.target.files?.[0]?.name ?? "No letterhead selected");
+                  }}
+                />
+
+                <div className="mt-4 rounded-lg border border-border/60 bg-background/40 p-3 text-sm text-muted-foreground">
+                  {selectedLetterhead}
+                </div>
+              </div>
+
+              <div className="rounded-lg border border-border/60 bg-secondary/20 p-5">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                    <Type className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-foreground">Reusable contract sections</h3>
+                    <p className="text-xs text-muted-foreground">The blocks Sheba AI should help fill</p>
+                  </div>
+                </div>
+
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {contractTemplateSections.map((section) => (
+                    <div key={section} className="rounded-lg border border-border/60 bg-background/40 p-3 text-sm leading-6 text-muted-foreground">
+                      {section}
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                  <ComingNextButton icon={Save} label="Save next" />
+                  <ComingNextButton icon={Eye} label="Preview next" />
+                  <ComingNextButton icon={Send} label="DocuSeal next" />
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="glass-card p-6 md:p-8">
@@ -258,97 +341,6 @@ const AdminDealDesk = () => {
             </div>
           </div>
 
-          <div id="contract-template" className="glass-card scroll-mt-28 p-6 md:p-8">
-            <div className="mb-6 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-              <div>
-                <div className="mb-3 inline-flex items-center gap-2 text-sm font-semibold text-primary">
-                  <FileUp className="h-4 w-4" />
-                  Contract template
-                </div>
-                <h2 className="text-2xl font-bold text-foreground">Default Letterhead and Contract Text</h2>
-                <p className="mt-2 max-w-2xl text-sm leading-6 text-muted-foreground">
-                  Upload the ShebaCore letterhead once, then combine it with client-specific contract text before sending through DocuSeal.
-                </p>
-              </div>
-              <Button variant="hero" asChild>
-                <Link to="/admin/ai">Ask Contract Agent</Link>
-              </Button>
-            </div>
-
-            <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-              <div className="rounded-lg border border-border/60 bg-secondary/20 p-5">
-                <div className="mb-4 flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                    <Upload className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-foreground">Default letterhead</h3>
-                    <p className="text-xs text-muted-foreground">PDF, DOCX, PNG, or JPG</p>
-                  </div>
-                </div>
-
-                <label
-                  htmlFor="letterhead-upload"
-                  className="flex min-h-40 cursor-pointer flex-col items-center justify-center rounded-lg border border-dashed border-primary/40 bg-background/40 p-6 text-center transition-colors hover:border-primary hover:bg-primary/5"
-                >
-                  <FileUp className="mb-3 h-8 w-8 text-primary" />
-                  <span className="text-sm font-semibold text-foreground">Upload ShebaCore letterhead</span>
-                  <span className="mt-2 text-xs leading-5 text-muted-foreground">
-                    This first version shows the selected file. Permanent storage comes with the backend.
-                  </span>
-                </label>
-                <input
-                  id="letterhead-upload"
-                  type="file"
-                  accept=".pdf,.doc,.docx,.png,.jpg,.jpeg"
-                  className="sr-only"
-                  onChange={(event) => {
-                    setSelectedLetterhead(event.target.files?.[0]?.name ?? "No letterhead selected");
-                  }}
-                />
-
-                <div className="mt-4 rounded-lg border border-border/60 bg-background/40 p-3 text-sm text-muted-foreground">
-                  {selectedLetterhead}
-                </div>
-              </div>
-
-              <div className="rounded-lg border border-border/60 bg-secondary/20 p-5">
-                <div className="mb-4 flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                    <Type className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-foreground">Reusable contract sections</h3>
-                    <p className="text-xs text-muted-foreground">The blocks Sheba AI should help fill</p>
-                  </div>
-                </div>
-
-                <div className="grid gap-3 sm:grid-cols-2">
-                  {contractTemplateSections.map((section) => (
-                    <div key={section} className="rounded-lg border border-border/60 bg-background/40 p-3 text-sm leading-6 text-muted-foreground">
-                      {section}
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-5 grid gap-3 sm:grid-cols-3">
-                  <Button variant="hero-outline" className="gap-2">
-                    <Save className="h-4 w-4" />
-                    Save template
-                  </Button>
-                  <Button variant="hero-outline" className="gap-2">
-                    <Eye className="h-4 w-4" />
-                    Preview contract
-                  </Button>
-                  <Button variant="hero-outline" className="gap-2">
-                    <Send className="h-4 w-4" />
-                    Send to DocuSeal
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
-
           <div className="grid gap-6 lg:grid-cols-2">
             <div id="contracts" className="glass-card scroll-mt-28 p-6 md:p-8">
               <div className="mb-6 flex items-center gap-3">
@@ -369,16 +361,6 @@ const AdminDealDesk = () => {
                     {step}
                   </div>
                 ))}
-              </div>
-              <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                <Button variant="hero-outline" className="gap-2">
-                  <PenTool className="h-4 w-4" />
-                  Draft scope
-                </Button>
-                <Button variant="hero-outline" className="gap-2">
-                  <Send className="h-4 w-4" />
-                  Prepare signing link
-                </Button>
               </div>
             </div>
 
@@ -401,16 +383,6 @@ const AdminDealDesk = () => {
                     {step}
                   </div>
                 ))}
-              </div>
-              <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                <Button variant="hero-outline" className="gap-2">
-                  <Copy className="h-4 w-4" />
-                  Copy message draft
-                </Button>
-                <Button variant="hero-outline" className="gap-2">
-                  <Send className="h-4 w-4" />
-                  Prepare payment link
-                </Button>
               </div>
             </div>
           </div>
