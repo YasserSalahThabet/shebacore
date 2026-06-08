@@ -44,6 +44,20 @@ function notConfigured() {
   );
 }
 
+function cleanEnvValue(value: string | undefined) {
+  if (!value) return undefined;
+
+  const trimmed = value.trim();
+  const hasSingleQuotes = trimmed.startsWith("'") && trimmed.endsWith("'");
+  const hasDoubleQuotes = trimmed.startsWith('"') && trimmed.endsWith('"');
+
+  if ((hasSingleQuotes || hasDoubleQuotes) && trimmed.length >= 2) {
+    return trimmed.slice(1, -1).trim();
+  }
+
+  return trimmed;
+}
+
 function timingSafeEqual(a: string, b: string) {
   if (a.length !== b.length) return false;
 
@@ -110,8 +124,8 @@ function logout(request: Request) {
 }
 
 export default async function middleware(request: Request) {
-  const expectedUser = process.env[USER_ENV];
-  const expectedPassword = process.env[PASSWORD_ENV];
+  const expectedUser = cleanEnvValue(process.env[USER_ENV]);
+  const expectedPassword = cleanEnvValue(process.env[PASSWORD_ENV]);
 
   if (!expectedUser || !expectedPassword) {
     return notConfigured();
@@ -131,8 +145,8 @@ export default async function middleware(request: Request) {
   if (url.pathname === LOGIN_PATH) {
     if (request.method === "POST") {
       const form = await request.formData();
-      const username = String(form.get("username") ?? "");
-      const password = String(form.get("password") ?? "");
+      const username = String(form.get("username") ?? "").trim();
+      const password = String(form.get("password") ?? "").trim();
       const next = safeNextPath(form.get("next"));
       const validUser = timingSafeEqual(username, expectedUser);
       const validPassword = timingSafeEqual(password, expectedPassword);
