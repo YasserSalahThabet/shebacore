@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
-import { Layout } from "@/components/layout/Layout";
+import { AdminShell } from "@/components/admin/AdminShell";
 import { Button } from "@/components/ui/button";
 import {
+  ArrowLeft,
   Bot,
   Code2,
   FileText,
@@ -47,20 +48,23 @@ const connectionItems = [
   { label: "Local Sheba AI", status: "Not connected", icon: Server },
   { label: "MCP Tools", status: "Planned", icon: PlugZap },
   { label: "Ollama Models", status: "Planned", icon: Network },
-  { label: "Admin Auth", status: "Required", icon: Lock },
+  { label: "Admin Auth", status: "Protected", icon: Lock },
 ];
 
 const AdminAI = () => {
   return (
-    <Layout>
-      <section className="pt-32 pb-10 bg-background relative overflow-hidden">
+    <AdminShell>
+      <section className="bg-background relative overflow-hidden py-16">
         <div className="absolute inset-0 grid-pattern opacity-10" />
         <div className="absolute top-20 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" />
 
         <div className="section-container relative z-10">
           <div className="mb-8">
             <Button variant="ghost" asChild className="px-0 text-muted-foreground hover:text-foreground">
-              <Link to="/admin">Back to Admin</Link>
+              <Link to="/admin" className="gap-2">
+                <ArrowLeft className="h-4 w-4" />
+                Back to Admin
+              </Link>
             </Button>
           </div>
 
@@ -74,7 +78,7 @@ const AdminAI = () => {
                 AI Console <span className="text-primary">Preview</span>
               </h1>
               <p className="mt-5 max-w-2xl text-lg text-muted-foreground">
-                A safe frontend shell for the Sheba AI workspace. The real AI backend can be connected later through protected APIs, not public frontend secrets.
+                A safe admin shell for the Sheba AI workspace. The real AI backend can be connected later through protected APIs, not public frontend secrets.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Button variant="hero" size="lg" asChild>
@@ -84,7 +88,7 @@ const AdminAI = () => {
                   </a>
                 </Button>
                 <Button variant="hero-outline" size="lg" asChild>
-                  <Link to="/admin">Admin Dashboard</Link>
+                  <Link to="/admin#partners">Partner Pipeline</Link>
                 </Button>
               </div>
             </div>
@@ -96,7 +100,7 @@ const AdminAI = () => {
                 </div>
                 <div>
                   <h2 className="text-xl font-semibold text-foreground">Connection Status</h2>
-                  <p className="text-sm text-muted-foreground">Safe mode until backend auth is ready.</p>
+                  <p className="text-sm text-muted-foreground">Safe mode until backend tools are ready.</p>
                 </div>
               </div>
               <div className="space-y-3">
@@ -150,11 +154,11 @@ const AdminAI = () => {
                 </div>
                 <div>
                   <h2 className="text-xl font-semibold text-foreground">What This Needs Next</h2>
-                  <p className="text-sm text-muted-foreground">Before public AI controls go live.</p>
+                  <p className="text-sm text-muted-foreground">Before production AI controls go live.</p>
                 </div>
               </div>
               <div className="space-y-3 text-sm leading-6 text-muted-foreground">
-                <p>1. Choose the real admin authentication method.</p>
+                <p>1. Choose which Sheba AI tools belong in the admin console first.</p>
                 <p>2. Decide whether Sheba AI stays local, moves to a VPS, or uses hosted APIs.</p>
                 <p>3. Add backend routes that keep tokens and MCP keys server-side only.</p>
                 <p>4. Connect status checks, logs, and launch buttons after the secure backend exists.</p>
@@ -186,7 +190,7 @@ const AdminAI = () => {
           </div>
         </div>
       </section>
-    </Layout>
+    </AdminShell>
   );
 };
 
