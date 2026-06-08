@@ -49,9 +49,10 @@ export function AdminShell({ children }: AdminShellProps) {
             <div className="flex flex-wrap items-center gap-2">
               {adminLinks.map((item) => {
                 const Icon = item.icon;
-                const isActive =
-                  location.pathname === item.href ||
-                  (item.href.includes("#") && location.pathname === item.href.split("#")[0]);
+                const isHashLink = item.href.includes("#");
+                const isActive = isHashLink
+                  ? `${location.pathname}${location.hash}` === item.href
+                  : location.pathname === item.href;
 
                 return (
                   <Button
