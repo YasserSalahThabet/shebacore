@@ -14,6 +14,7 @@ import Cryptonite from "./pages/Cryptonite";
 import AdminLogin from "./pages/AdminLogin";
 import Admin from "./pages/Admin";
 import AdminAI from "./pages/AdminAI";
+import AdminDealDesk from "./pages/AdminDealDesk";
 import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/terms" element={<Terms />} />
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/admin/deals" element={<AdminDealDesk />} />
           <Route path="/admin/ai" element={<AdminAI />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
