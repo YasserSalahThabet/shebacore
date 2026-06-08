@@ -9,12 +9,12 @@ import {
   Building2,
   CheckCircle2,
   Clock3,
+  CreditCard,
   Database,
   FileText,
   Globe2,
   Image,
   Lock,
-  Settings,
   ShieldCheck,
   Sparkles,
   Users,
@@ -23,15 +23,16 @@ import {
 const overview = [
   { label: "Site", value: "Live", detail: "Production website is active", icon: Globe2 },
   { label: "Admin", value: "Protected", detail: "Private console is behind auth", icon: ShieldCheck },
-  { label: "AI", value: "Ready", detail: "Sheba AI workspace can be connected next", icon: Bot },
-  { label: "Partners", value: "Pipeline", detail: "Track partner lines and next steps", icon: Briefcase },
+  { label: "Deal Desk", value: "New", detail: "Clients, contracts, and payment links", icon: CreditCard },
+  { label: "AI", value: "Ready", detail: "Sheba AI can become your operator layer", icon: Bot },
 ];
 
 const workspaces = [
   {
-    title: "Website Content",
-    description: "Prepare page updates, offers, case studies, announcements, and content changes.",
-    icon: FileText,
+    title: "Deal Desk",
+    description: "Manage clients, projects, contracts to sign, payment links, and follow-up actions.",
+    icon: CreditCard,
+    href: "/admin/deals",
   },
   {
     title: "Partners Pipeline",
@@ -40,15 +41,15 @@ const workspaces = [
     href: "/admin#partners",
   },
   {
-    title: "Project Lines",
-    description: "Shape each partner relationship into packages, delivery scope, and customer offers.",
-    icon: Users,
-  },
-  {
     title: "Sheba AI Console",
-    description: "Launch the AI workspace, tool planning, and agent prompts from one place.",
+    description: "Launch your agents for sales, contracts, payments, projects, and voice commands.",
     icon: Sparkles,
     href: "/admin/ai",
+  },
+  {
+    title: "Website Content",
+    description: "Prepare page updates, offers, case studies, announcements, and content changes.",
+    icon: FileText,
   },
   {
     title: "Media Pipeline",
@@ -57,7 +58,7 @@ const workspaces = [
   },
   {
     title: "Data and Integrations",
-    description: "Track future CRM, analytics, MCP, automation, and backend connections.",
+    description: "Track future CRM, DocuSeal, payment providers, MCP, automation, and backend connections.",
     icon: Database,
   },
 ];
@@ -90,30 +91,30 @@ const partnerProjects = [
   {
     partner: "Sheba AI",
     type: "Internal product",
-    projectLine: "Admin AI console, agents, local tools, and future media workflows.",
+    projectLine: "Admin AI console, agents, voice commands, payment support, and contract support.",
     stage: "Active",
     owner: "Yaz",
-    nextStep: "Decide which tools should connect first.",
+    nextStep: "Connect agents to Deal Desk context.",
   },
 ];
 
 const operationsQueue = [
-  "Confirm the partner names you want visible in the admin list.",
-  "Define one project line for each partner or service category.",
-  "Connect Sheba AI through a protected backend when ready.",
-  "Add a real data store for partners, notes, and status updates.",
+  "Replace starter Deal Desk records with real clients and projects.",
+  "Connect DocuSeal for free contract signing and signed PDF tracking.",
+  "Choose Moyasar or PayTabs for real payment-link generation.",
+  "Connect Sheba AI to client, deal, contract, and payment context.",
 ];
 
 const guardrails = [
-  "No private tokens or API keys are stored in this frontend.",
-  "Admin access is protected before the console is useful for real operations.",
-  "Sheba AI backend should stay behind a secure API before public use.",
+  "No private tokens, payment keys, or signing keys are stored in this frontend.",
+  "Contracts and payment links should be created by secure server routes only.",
+  "Sheba AI should draft actions first and wait for your approval before sending anything.",
 ];
 
 const Admin = () => {
   return (
     <AdminShell>
-      <section className="bg-background relative overflow-hidden py-16">
+      <section className="relative overflow-hidden bg-background py-16">
         <div className="absolute inset-0 grid-pattern opacity-10" />
         <div className="absolute top-12 right-0 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
         <div className="absolute bottom-0 left-0 h-80 w-80 rounded-full bg-primary/5 blur-3xl" />
@@ -129,20 +130,20 @@ const Admin = () => {
                 ShebaCore <span className="text-primary">Command Center</span>
               </h1>
               <p className="mt-5 max-w-2xl text-lg text-muted-foreground">
-                A focused workspace for partners, project lines, Sheba AI, content planning, media work, and operational next steps.
+                A focused workspace for clients, deals, contracts, payment links, partners, Sheba AI, media work, and operational next steps.
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
               <Button variant="hero" size="lg" asChild>
-                <Link to="/admin/ai">
-                  Open AI Console
-                  <Bot className="h-4 w-4" />
+                <Link to="/admin/deals">
+                  Open Deal Desk
+                  <CreditCard className="h-4 w-4" />
                 </Link>
               </Button>
               <Button variant="hero-outline" size="lg" asChild>
-                <Link to="/admin#partners">
-                  Review Partners
-                  <ArrowRight className="h-4 w-4" />
+                <Link to="/admin/ai">
+                  Open AI Console
+                  <Bot className="h-4 w-4" />
                 </Link>
               </Button>
             </div>
@@ -182,9 +183,7 @@ const Admin = () => {
                   </div>
                   <h2 className="text-xl font-semibold text-foreground">{workspace.title}</h2>
                   <p className="mt-3 text-sm leading-6 text-muted-foreground">{workspace.description}</p>
-                  {workspace.href && (
-                    <div className="mt-5 text-sm font-semibold text-primary">Open workspace</div>
-                  )}
+                  {workspace.href && <div className="mt-5 text-sm font-semibold text-primary">Open workspace</div>}
                 </div>
               );
 
@@ -198,7 +197,7 @@ const Admin = () => {
             })}
           </div>
 
-          <div id="partners" className="glass-card p-6 md:p-8 scroll-mt-28">
+          <div id="partners" className="glass-card scroll-mt-28 p-6 md:p-8">
             <div className="mb-6 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
               <div>
                 <div className="mb-3 inline-flex items-center gap-2 text-sm font-semibold text-primary">
@@ -207,11 +206,11 @@ const Admin = () => {
                 </div>
                 <h2 className="text-2xl font-bold text-foreground">Partner Pipeline</h2>
                 <p className="mt-2 max-w-2xl text-sm leading-6 text-muted-foreground">
-                  A starter operating view for the partners, service lines, and internal products you want to track from the admin page.
+                  A starter operating view for partners, service lines, and internal products you want to track from the admin page.
                 </p>
               </div>
               <Button variant="hero-outline" asChild>
-                <Link to="/admin/ai">Use Sheba AI to plan next steps</Link>
+                <Link to="/admin/deals">Turn into client deal</Link>
               </Button>
             </div>
 
@@ -229,9 +228,7 @@ const Admin = () => {
                     <div className="font-semibold text-foreground">{item.partner}</div>
                     <div className="mt-1 text-xs text-muted-foreground">{item.type}</div>
                   </div>
-                  <div className="col-span-12 text-sm leading-6 text-muted-foreground md:col-span-4">
-                    {item.projectLine}
-                  </div>
+                  <div className="col-span-12 text-sm leading-6 text-muted-foreground md:col-span-4">{item.projectLine}</div>
                   <div className="col-span-6 md:col-span-2">
                     <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-2.5 py-1 text-xs font-semibold text-primary">
                       <Clock3 className="h-3.5 w-3.5" />
@@ -268,7 +265,7 @@ const Admin = () => {
               </div>
             </div>
 
-            <div id="settings" className="glass-card p-6 md:p-8 scroll-mt-28">
+            <div id="settings" className="glass-card scroll-mt-28 p-6 md:p-8">
               <div className="mb-6 flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
                   <ShieldCheck className="h-5 w-5" />
