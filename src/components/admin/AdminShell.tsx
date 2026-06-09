@@ -6,9 +6,11 @@ import {
   CreditCard,
   ExternalLink,
   LayoutDashboard,
+  ListTodo,
   Settings,
   ShieldCheck,
 } from "lucide-react";
+import { TodoistTaskPanel } from "@/components/admin/TodoistTaskPanel";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -18,6 +20,7 @@ interface AdminShellProps {
 
 const adminLinks = [
   { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
+  { label: "Tasks", href: "/admin#tasks", icon: ListTodo },
   { label: "Deal Desk", href: "/admin/deals", icon: CreditCard },
   { label: "AI Console", href: "/admin/ai", icon: Bot },
   { label: "Partners", href: "/admin#partners", icon: Briefcase },
@@ -26,6 +29,7 @@ const adminLinks = [
 
 export function AdminShell({ children }: AdminShellProps) {
   const location = useLocation();
+  const shouldShowTaskPanel = location.pathname === "/admin";
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -87,6 +91,14 @@ export function AdminShell({ children }: AdminShellProps) {
       </header>
 
       <main>{children}</main>
+
+      {shouldShowTaskPanel ? (
+        <section className="bg-background pb-20">
+          <div className="section-container">
+            <TodoistTaskPanel />
+          </div>
+        </section>
+      ) : null}
 
       <footer className="border-t border-border/60 bg-background/80">
         <div className="section-container flex flex-col gap-2 py-5 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
