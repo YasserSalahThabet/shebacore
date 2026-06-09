@@ -26,21 +26,21 @@ const industries = [
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-[88vh] flex items-center justify-center overflow-hidden">
+    <section className="relative flex min-h-[86vh] items-center justify-center overflow-hidden">
       <HeroBackground />
 
       {/* Content */}
-      <div className="relative z-10 section-container py-28 md:py-32">
-        <div className="max-w-4xl mx-auto text-center">
+      <div className="relative z-10 section-container pt-28 pb-14 md:py-32">
+        <div className="mx-auto max-w-5xl text-center">
           {/* Tagline Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6"
+            className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-sm font-medium text-primary"
           >
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            AI-Powered Business Transformation
+            <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
+            AI Operations & Technology Enablement
           </motion.div>
 
           {/* Headline */}
@@ -48,7 +48,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-5 text-foreground"
+            className="mb-5 text-4xl font-bold text-foreground sm:text-5xl md:text-6xl lg:text-7xl"
           >
             More Profit.{" "}
             <span className="text-primary">More Time.</span>
@@ -61,9 +61,9 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.25 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8"
+            className="mx-auto mb-8 max-w-2xl text-lg text-muted-foreground md:text-xl"
           >
-            We analyze your business, map where AI delivers maximum impact, and build working prototypes — in as little as 14 days.
+            ShebaCore maps your workflows, selects the right technology, and builds AI-powered prototypes that turn operations into measurable systems.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -71,7 +71,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col justify-center gap-4 sm:flex-row"
           >
             <Button variant="hero" size="xl" asChild>
               <a
@@ -81,12 +81,12 @@ export function HeroSection() {
                 className="gap-3"
               >
                 <Calendar size={20} />
-                Schedule a Free Consultation
+                Book a Strategy Call
               </a>
             </Button>
             <Button variant="hero-outline" size="xl" asChild>
               <Link to="/solutions" className="gap-3">
-                Explore Solutions
+                View Capabilities
                 <ArrowRight size={20} />
               </Link>
             </Button>
@@ -97,17 +97,17 @@ export function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="mt-12 pt-6 border-t border-border/30"
+            className="mt-10 border-t border-border/30 pt-6 md:mt-12"
           >
-            <div className="flex items-center justify-center gap-3 text-sm text-muted-foreground mb-5">
+            <div className="mb-5 flex items-center justify-center gap-3 text-sm text-muted-foreground">
               <span>US Based</span>
-              <span className="w-1 h-1 rounded-full bg-muted-foreground/40" />
-              <span>Now Operating in KSA</span>
+              <span className="h-1 w-1 rounded-full bg-muted-foreground/40" />
+              <span>Operating in KSA</span>
             </div>
             <h2 className="mb-4 text-base font-semibold text-foreground">
               Industries We Specialize In
             </h2>
-            <div className="flex flex-wrap justify-center gap-3">
+            <div className="mx-auto flex max-w-4xl flex-wrap justify-center gap-3">
               {industries.map((industry) => (
                 <div
                   key={industry.name}
@@ -119,13 +119,6 @@ export function HeroSection() {
               ))}
             </div>
           </motion.div>
-        </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-float">
-        <div className="w-6 h-10 rounded-full border-2 border-foreground/30 flex justify-center pt-2">
-          <div className="w-1 h-2 rounded-full bg-primary animate-pulse" />
         </div>
       </div>
     </section>
