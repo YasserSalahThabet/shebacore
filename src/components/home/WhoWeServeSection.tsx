@@ -7,6 +7,8 @@ import {
   Stethoscope,
   Hotel,
   Landmark,
+  Plane,
+  Calculator,
 } from "lucide-react";
 
 const segments = [
@@ -21,6 +23,8 @@ const industries = [
   { icon: Truck, name: "Logistics" },
   { icon: Hotel, name: "Hospitality" },
   { icon: Landmark, name: "Public Sector" },
+  { icon: Plane, name: "Travel Agencies" },
+  { icon: Calculator, name: "Accountants" },
 ];
 
 export function WhoWeServeSection() {
