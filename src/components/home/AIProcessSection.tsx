@@ -6,17 +6,17 @@ const steps = [
   {
     icon: Search,
     step: "01",
-    title: "Analyze",
+    title: "Diagnose",
     description:
-      "Deep dive into your existing data infrastructure to uncover insights and opportunities.",
+      "Map the workflow, tools, manual steps, data sources, and decision points that slow the business down.",
     accent: "from-primary/20 to-primary/5",
   },
   {
     icon: Map,
     step: "02",
-    title: "Map",
+    title: "Design",
     description:
-      "Comprehensive mapping of your workflows to pinpoint where AI delivers maximum impact.",
+      "Define the right technology stack, AI agents, automations, controls, and reporting layer for the use case.",
     accent: "from-primary/15 to-primary/5",
   },
   {
@@ -24,7 +24,7 @@ const steps = [
     step: "03",
     title: "Prototype",
     description:
-      "Working prototype demonstrating exactly how AI will work in your business — ready in 7–14 days.",
+      "Build a working proof of value so you can test the workflow before committing to a full implementation.",
     accent: "from-primary/10 to-primary/5",
   },
 ];
@@ -34,7 +34,7 @@ export function AIProcessSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-16 md:py-24 bg-background relative overflow-hidden">
+    <section className="py-16 md:py-20 bg-background relative overflow-hidden">
       {/* Subtle floating accents */}
       <motion.div
         className="absolute top-12 right-[5%] w-64 h-64 rounded-full bg-primary/5 blur-3xl"
@@ -48,13 +48,13 @@ export function AIProcessSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="max-w-3xl mx-auto text-center mb-12"
+          className="max-w-3xl mx-auto text-center mb-10"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            How We <span className="text-primary">Transform</span> Your Business
+            A Simple <span className="text-primary">Operating Model</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            A clear, results-driven process that turns your data into competitive advantage.
+            The fastest path from business problem to useful AI or technology workflow.
           </p>
         </motion.div>
 
