@@ -1,17 +1,20 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Calendar, Mail, MapPin, Phone } from "lucide-react";
+
+const CALENDAR_URL = "https://cal.com/shebacore/discovery-call-shebacore";
 
 const footerLinks = {
   company: [
-    { name: "About Us", href: "/about" },
-    { name: "Partners", href: "/partners" },
+    { name: "About", href: "/about" },
+    { name: "Capabilities", href: "/solutions" },
+    { name: "Technology Ecosystem", href: "/partners" },
     { name: "Contact", href: "/contact" },
   ],
-  solutions: [
-    { name: "Cybersecurity", href: "/solutions#cybersecurity" },
-    { name: "Cloud Services", href: "/solutions#cloud" },
-    { name: "Networking", href: "/solutions#networking" },
+  capabilities: [
     { name: "AI & Automation", href: "/solutions#ai" },
+    { name: "Cybersecurity", href: "/solutions#cybersecurity" },
+    { name: "Cloud & Managed IT", href: "/solutions#cloud" },
+    { name: "Insights & Reporting", href: "/solutions#insights" },
   ],
   legal: [
     { name: "Privacy Policy", href: "/privacy" },
@@ -21,37 +24,37 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="bg-card border-t border-border">
-      <div className="section-container py-12 md:py-14">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+    <footer className="border-t border-border bg-card">
+      <div className="section-container py-10 md:py-12">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center gap-2 mb-5">
-              <div className="w-8 h-8 relative">
+            <Link to="/" className="mb-4 flex items-center gap-2">
+              <div className="relative h-8 w-8">
                 <img
                   src="/logo-hexagon.png?v=2"
                   alt="ShebaCore hexagon logo"
-                  className="w-full h-full object-contain"
+                  className="h-full w-full object-contain"
                 />
               </div>
               <span className="text-xl font-bold text-foreground">
                 Sheba<span className="text-primary">Core</span>
               </span>
             </Link>
-            <p className="text-muted-foreground text-sm">
-              Technology, AI, security, and operations guidance built around a stronger business core.
+            <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
+              AI operations, workflow automation, and vendor-neutral technology enablement for businesses that want less complexity and stronger systems.
             </p>
           </div>
 
           {/* Company Links */}
           <div>
-            <h4 className="text-foreground font-semibold mb-4">Company</h4>
+            <h4 className="mb-4 font-semibold text-foreground">Company</h4>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
                   <Link
                     to={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                    className="text-sm text-muted-foreground transition-colors hover:text-primary"
                   >
                     {link.name}
                   </Link>
@@ -60,15 +63,15 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Solutions Links */}
+          {/* Capabilities Links */}
           <div>
-            <h4 className="text-foreground font-semibold mb-4">Solutions</h4>
+            <h4 className="mb-4 font-semibold text-foreground">Capabilities</h4>
             <ul className="space-y-3">
-              {footerLinks.solutions.map((link) => (
+              {footerLinks.capabilities.map((link) => (
                 <li key={link.name}>
                   <Link
                     to={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                    className="text-sm text-muted-foreground transition-colors hover:text-primary"
                   >
                     {link.name}
                   </Link>
@@ -79,30 +82,47 @@ export function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-foreground font-semibold mb-4">Contact</h4>
+            <h4 className="mb-4 font-semibold text-foreground">Contact</h4>
             <ul className="space-y-3">
-              <li className="flex items-center gap-3 text-muted-foreground text-sm">
+              <li className="flex items-center gap-3 text-sm text-muted-foreground">
                 <Mail size={16} className="text-primary" />
-                <a href="mailto:info@shebacore.com" className="hover:text-primary transition-colors">info@shebacore.com</a>
+                <a href="mailto:info@shebacore.com" className="transition-colors hover:text-primary">
+                  info@shebacore.com
+                </a>
               </li>
-              <li className="flex items-center gap-3 text-muted-foreground text-sm">
+              <li className="flex items-center gap-3 text-sm text-muted-foreground">
                 <Phone size={16} className="text-primary" />
-                <a href="tel:+17603634466" className="hover:text-primary transition-colors">+1 (760) 363-4466</a>
+                <a href="tel:+17603634466" className="transition-colors hover:text-primary">
+                  +1 (760) 363-4466
+                </a>
               </li>
-              <li className="flex items-start gap-3 text-muted-foreground text-sm">
-                <MapPin size={16} className="text-primary mt-0.5" />
+              <li className="flex items-start gap-3 text-sm text-muted-foreground">
+                <MapPin size={16} className="mt-0.5 text-primary" />
                 <div className="flex flex-col">
-                  <span>United States</span>
-                  <span className="text-xs text-muted-foreground/70">Operating in the Middle East • KSA Office</span>
+                  <span>US based</span>
+                  <span className="text-xs text-muted-foreground/70">
+                    Serving KSA and the Middle East
+                  </span>
                 </div>
+              </li>
+              <li className="flex items-center gap-3 text-sm text-muted-foreground">
+                <Calendar size={16} className="text-primary" />
+                <a
+                  href={CALENDAR_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-primary"
+                >
+                  Book a strategy call
+                </a>
               </li>
             </ul>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-10 pt-6 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-muted-foreground text-sm">
+        <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-border pt-5 md:flex-row">
+          <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} ShebaCore. All rights reserved.
           </p>
           <div className="flex gap-6">
@@ -110,7 +130,7 @@ export function Footer() {
               <Link
                 key={link.name}
                 to={link.href}
-                className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                className="text-sm text-muted-foreground transition-colors hover:text-primary"
               >
                 {link.name}
               </Link>
