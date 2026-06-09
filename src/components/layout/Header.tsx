@@ -5,12 +5,12 @@ import { Menu, X } from "lucide-react";
 
 const CRYPTONITE_URL =
   "https://cryptonite-y2ymjxmdwcivxmn6gn7blx.streamlit.app";
+const CALENDAR_URL = "https://cal.com/shebacore/discovery-call-shebacore";
 
 const navigation = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Solutions", href: "/solutions" },
-  // ✅ External link
   { name: "Cryptonite", href: CRYPTONITE_URL, external: true },
   { name: "Partners", href: "/partners" },
   { name: "Contact", href: "/contact" },
@@ -83,7 +83,7 @@ export function Header() {
           {/* CTA Button */}
           <div className="hidden md:block">
             <Button variant="hero" size="lg" asChild>
-              <a href="https://cal.com/shebacore/discovery-call-shebacore" target="_blank" rel="noopener noreferrer">Get Started</a>
+              <a href={CALENDAR_URL} target="_blank" rel="noopener noreferrer">Book Call</a>
             </Button>
           </div>
 
@@ -131,12 +131,12 @@ export function Header() {
 
               <Button variant="hero" size="lg" className="mt-4" asChild>
                 <a
-                  href="https://cal.com/shebacore/discovery-call-shebacore"
+                  href={CALENDAR_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Get Started
+                  Book Strategy Call
                 </a>
               </Button>
             </div>
