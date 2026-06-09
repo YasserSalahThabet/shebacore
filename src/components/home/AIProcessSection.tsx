@@ -34,7 +34,7 @@ export function AIProcessSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="relative overflow-hidden bg-background py-14 md:py-16">
+    <section className="relative overflow-hidden bg-background pt-14 pb-8 md:pt-16 md:pb-10">
       {/* Subtle floating accents */}
       <motion.div
         className="absolute top-12 right-[5%] h-56 w-56 rounded-full bg-primary/5 blur-3xl"
