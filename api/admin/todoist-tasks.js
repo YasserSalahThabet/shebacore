@@ -15,9 +15,10 @@ function cleanEnvValue(value) {
 }
 
 function sendJson(response, status, payload) {
-  response.status(status).setHeader("Cache-Control", "no-store");
+  response.statusCode = status;
+  response.setHeader("Cache-Control", "no-store");
   response.setHeader("Content-Type", "application/json; charset=utf-8");
-  response.json(payload);
+  response.end(JSON.stringify(payload));
 }
 
 function normalizeTask(task) {
@@ -79,7 +80,11 @@ export default async function handler(request, response) {
     }
 
     const payload = rawBody ? JSON.parse(rawBody) : {};
-    const tasks = Array.isArray(payload.results) ? payload.results : [];
+    const tasks = Array.isArray(payload)
+      ? payload
+      : Array.isArray(payload.results)
+        ? payload.results
+        : [];
 
     return sendJson(response, 200, {
       configured: true,
