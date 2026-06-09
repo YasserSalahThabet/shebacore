@@ -83,16 +83,16 @@ export function SolutionsSection() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="py-24 md:py-32 bg-card/50">
+    <section className="py-16 md:py-24 bg-card/50">
       <div className="section-container" ref={ref}>
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="max-w-3xl mx-auto text-center mb-16"
+          className="max-w-3xl mx-auto text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Solutions We <span className="text-primary">Offer</span>
           </h2>
           <p className="text-lg text-muted-foreground">
@@ -101,7 +101,7 @@ export function SolutionsSection() {
         </motion.div>
 
         {/* Solutions Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
           {solutions.map((solution, index) => (
             <motion.div
               key={solution.title}
@@ -111,15 +111,15 @@ export function SolutionsSection() {
             >
               <Link
                 to={solution.href}
-                className="glass-card p-6 group hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 block h-full"
+                className="glass-card p-5 group hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 block h-full"
               >
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
-                  <solution.icon className="w-6 h-6 text-primary" />
+                <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                  <solution.icon className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="text-lg font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
+                <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
                   {solution.title}
                 </h3>
-                <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
+                <p className="text-sm text-muted-foreground mb-3 line-clamp-3">
                   {solution.description}
                 </p>
                 <div className="flex items-center gap-2 text-primary text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
