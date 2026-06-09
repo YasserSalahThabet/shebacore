@@ -1,11 +1,11 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Building2, Store } from "lucide-react";
+import { Building2, Store, BriefcaseBusiness } from "lucide-react";
 
 const segments = [
-  { icon: Building2, name: "Small & Medium Businesses", description: "Growing companies ready to scale" },
-  { icon: Building2, name: "Enterprise Organizations", description: "Fortune 500 and large corporations" },
-  { icon: Store, name: "Multi-Location Businesses", description: "Retail chains and franchises" },
+  { icon: Building2, name: "Growing Businesses", description: "Teams that need better systems without adding operational complexity" },
+  { icon: BriefcaseBusiness, name: "Service Operators", description: "Consultancies, agencies, accountants, and professional service teams" },
+  { icon: Store, name: "Multi-Location Teams", description: "Retail, hospitality, travel, and distributed teams that need consistency" },
 ];
 
 export function WhoWeServeSection() {
@@ -23,10 +23,10 @@ export function WhoWeServeSection() {
           className="max-w-3xl mx-auto text-center mb-10"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Who We <span className="text-primary">Serve</span>
+            Built for <span className="text-primary">Operational Teams</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            From startups to enterprises, we deliver tailored technology solutions across diverse industries.
+            The best fit is a business with clear work to improve, automate, secure, or measure.
           </p>
         </motion.div>
 
