@@ -40,9 +40,9 @@ export function StatsSection() {
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
-    <section className="py-16 md:py-20 border-y border-border/30 bg-card/30">
+    <section className="py-12 md:py-16 border-y border-border/30 bg-card/30">
       <div className="section-container" ref={ref}>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
