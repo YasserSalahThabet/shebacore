@@ -8,16 +8,16 @@ export function CTASection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-16 md:py-20 bg-card relative overflow-hidden">
+    <section className="relative overflow-hidden bg-card py-14 md:py-16">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-glow opacity-30" />
       <motion.div
-        className="absolute top-0 left-1/4 w-80 h-80 bg-primary/10 rounded-full blur-3xl"
+        className="absolute top-0 left-1/4 h-72 w-72 rounded-full bg-primary/10 blur-3xl"
         animate={{ y: [0, -15, 0], scale: [1, 1.05, 1] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute bottom-0 right-1/4 w-80 h-80 bg-primary/5 rounded-full blur-3xl"
+        className="absolute bottom-0 right-1/4 h-72 w-72 rounded-full bg-primary/5 blur-3xl"
         animate={{ y: [0, 15, 0], scale: [1, 1.08, 1] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />
@@ -27,17 +27,17 @@ export function CTASection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto text-center"
+          className="mx-auto max-w-4xl text-center"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <h2 className="mb-3 text-3xl font-bold text-foreground md:text-4xl lg:text-5xl">
             Ready to Build Your{" "}
             <span className="text-primary">AI Operating Core?</span>
           </h2>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <p className="mx-auto mb-7 max-w-2xl text-lg text-muted-foreground">
             Start with one workflow, one measurable problem, and a practical prototype roadmap.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col justify-center gap-3 sm:flex-row">
             <Button variant="hero" size="xl" asChild>
               <a
                 href="https://cal.com/shebacore/discovery-call-shebacore"
@@ -52,12 +52,12 @@ export function CTASection() {
           </div>
 
           {/* Trust badges */}
-          <div className="mt-10 flex flex-wrap justify-center gap-x-6 gap-y-3 text-muted-foreground">
+          <div className="mt-8 flex flex-wrap justify-center gap-x-5 gap-y-3 text-muted-foreground">
             {["Workflow-first planning", "Prototype before rollout", "Vendor-neutral stack"].map(
               (text) => (
                 <div key={text} className="flex items-center gap-2">
                   <svg
-                    className="w-5 h-5 text-primary"
+                    className="h-5 w-5 text-primary"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                   >
