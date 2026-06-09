@@ -11,8 +11,6 @@ import {
   Clock,
   Send,
   Calendar,
-  Linkedin,
-  Twitter,
 } from "lucide-react";
 
 const CALENDAR_URL = "https://cal.com/shebacore/discovery-call-shebacore";
@@ -240,29 +238,6 @@ const Contact = () => {
                       </p>
                     </div>
                   </div>
-                </div>
-              </div>
-
-              {/* Social Links */}
-              <div className="glass-card p-6 md:p-8">
-                <h3 className="text-lg font-semibold text-foreground mb-4">
-                  Follow Us
-                </h3>
-                <div className="flex gap-4">
-                  <a
-                    href="#"
-                    className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-secondary/80 transition-all"
-                    aria-label="LinkedIn"
-                  >
-                    <Linkedin size={20} />
-                  </a>
-                  <a
-                    href="#"
-                    className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-secondary/80 transition-all"
-                    aria-label="Twitter"
-                  >
-                    <Twitter size={20} />
-                  </a>
                 </div>
               </div>
             </div>
