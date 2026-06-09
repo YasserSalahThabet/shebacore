@@ -8,7 +8,7 @@ export function CTASection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-16 md:py-24 bg-card relative overflow-hidden">
+    <section className="py-16 md:py-20 bg-card relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-glow opacity-30" />
       <motion.div
@@ -30,11 +30,11 @@ export function CTASection() {
           className="max-w-4xl mx-auto text-center"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Your Technology, Built on a{" "}
-            <span className="text-primary">Strong Core</span>
+            Ready to Build Your{" "}
+            <span className="text-primary">AI Operating Core?</span>
           </h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Take the guesswork out of technology decisions. Book a free call with ShebaCore and let's build a reliable, scalable tech stack that truly supports your business.
+            Start with one workflow, one measurable problem, and a practical prototype roadmap.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -45,7 +45,7 @@ export function CTASection() {
                 rel="noopener noreferrer"
                 className="gap-3"
               >
-                Book a Free Strategy Call
+                Book a Strategy Call
                 <ArrowRight size={20} />
               </a>
             </Button>
@@ -53,7 +53,7 @@ export function CTASection() {
 
           {/* Trust badges */}
           <div className="mt-10 flex flex-wrap justify-center gap-x-6 gap-y-3 text-muted-foreground">
-            {["No commitment required", "Free consultation", "Expert guidance"].map(
+            {["Workflow-first planning", "Prototype before rollout", "Vendor-neutral stack"].map(
               (text) => (
                 <div key={text} className="flex items-center gap-2">
                   <svg
