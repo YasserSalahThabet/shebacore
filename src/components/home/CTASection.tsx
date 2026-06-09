@@ -8,16 +8,16 @@ export function CTASection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-24 md:py-32 bg-card relative overflow-hidden">
+    <section className="py-16 md:py-24 bg-card relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-glow opacity-30" />
       <motion.div
-        className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl"
+        className="absolute top-0 left-1/4 w-80 h-80 bg-primary/10 rounded-full blur-3xl"
         animate={{ y: [0, -15, 0], scale: [1, 1.05, 1] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl"
+        className="absolute bottom-0 right-1/4 w-80 h-80 bg-primary/5 rounded-full blur-3xl"
         animate={{ y: [0, 15, 0], scale: [1, 1.08, 1] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />
@@ -29,11 +29,11 @@ export function CTASection() {
           transition={{ duration: 0.6 }}
           className="max-w-4xl mx-auto text-center"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Your Technology, Built on a{" "}
             <span className="text-primary">Strong Core</span>
           </h2>
-          <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
             Take the guesswork out of technology decisions. Book a free call with ShebaCore and let's build a reliable, scalable tech stack that truly supports your business.
           </p>
 
@@ -52,7 +52,7 @@ export function CTASection() {
           </div>
 
           {/* Trust badges */}
-          <div className="mt-12 flex flex-wrap justify-center gap-8 text-muted-foreground">
+          <div className="mt-10 flex flex-wrap justify-center gap-x-6 gap-y-3 text-muted-foreground">
             {["No commitment required", "Free consultation", "Expert guidance"].map(
               (text) => (
                 <div key={text} className="flex items-center gap-2">
