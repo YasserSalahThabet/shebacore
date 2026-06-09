@@ -3,15 +3,12 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
-const CRYPTONITE_URL =
-  "https://cryptonite-y2ymjxmdwcivxmn6gn7blx.streamlit.app";
 const CALENDAR_URL = "https://cal.com/shebacore/discovery-call-shebacore";
 
 const navigation = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Solutions", href: "/solutions" },
-  { name: "Cryptonite", href: CRYPTONITE_URL, external: true },
   { name: "Partners", href: "/partners" },
   { name: "Contact", href: "/contact" },
 ];
@@ -53,31 +50,19 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-6 ml-8">
-            {navigation.map((item) =>
-              item.external ? (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm font-medium transition-colors animated-underline text-muted-foreground hover:text-foreground"
-                >
-                  {item.name}
-                </a>
-              ) : (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className={`text-sm font-medium transition-colors animated-underline ${
-                    location.pathname === item.href
-                      ? "text-foreground"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              )
-            )}
+            {navigation.map((item) => (
+              <Link
+                key={item.name}
+                to={item.href}
+                className={`text-sm font-medium transition-colors animated-underline ${
+                  location.pathname === item.href
+                    ? "text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {item.name}
+              </Link>
+            ))}
           </div>
 
           {/* CTA Button */}
@@ -101,33 +86,20 @@ export function Header() {
         {isMobileMenuOpen && (
           <div className="lg:hidden absolute top-full left-0 right-0 bg-background border-b border-border shadow-lg animate-fade-in">
             <div className="flex flex-col gap-4 px-6 py-6">
-              {navigation.map((item) =>
-                item.external ? (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-base font-medium py-2 transition-colors text-muted-foreground hover:text-foreground"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {item.name}
-                  </a>
-                ) : (
-                  <Link
-                    key={item.name}
-                    to={item.href}
-                    className={`text-base font-medium py-2 transition-colors ${
-                      location.pathname === item.href
-                        ? "text-foreground"
-                        : "text-muted-foreground hover:text-foreground"
-                    }`}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                )
-              )}
+              {navigation.map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className={`text-base font-medium py-2 transition-colors ${
+                    location.pathname === item.href
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              ))}
 
               <Button variant="hero" size="lg" className="mt-4" asChild>
                 <a
