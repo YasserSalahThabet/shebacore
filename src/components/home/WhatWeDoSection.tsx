@@ -1,25 +1,25 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Shield, Globe, Zap } from "lucide-react";
+import { Bot, Workflow, ShieldCheck } from "lucide-react";
 
 const features = [
   {
-    icon: Shield,
-    title: "Vendor-Neutral Partner",
+    icon: Workflow,
+    title: "Workflow Mapping",
     description:
-      "We work with 200+ leading technology providers to find the perfect fit for your business — no bias, just the best solutions.",
+      "We turn messy manual processes into clear maps, priorities, and implementation steps.",
   },
   {
-    icon: Globe,
-    title: "One Point of Contact",
+    icon: Bot,
+    title: "AI Prototype Builds",
     description:
-      "Eliminate vendor sprawl. We become your single trusted advisor for all technology decisions and implementations.",
+      "We build focused AI agents and automations that prove value before a larger rollout.",
   },
   {
-    icon: Zap,
-    title: "AI-First Approach",
+    icon: ShieldCheck,
+    title: "Technology Enablement",
     description:
-      "We identify where AI and automation can drive the biggest impact, then build it — fast.",
+      "We connect the right systems, security, cloud, and vendor ecosystem around the workflow.",
   },
 ];
 
@@ -28,20 +28,20 @@ export function WhatWeDoSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-16 md:py-24 bg-card/50">
+    <section className="py-16 md:py-20 bg-card/50">
       <div className="section-container" ref={ref}>
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="max-w-3xl mx-auto text-center mb-12"
+          className="max-w-3xl mx-auto text-center mb-10"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            What We <span className="text-primary">Do</span>
+            What We <span className="text-primary">Build</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            ShebaCore is a US-based technology solutions firm operating in the Middle East, helping businesses design, source, and implement the right technology stack — with expertise, not complexity.
+            ShebaCore helps teams move from scattered tools and manual work to smarter, measurable operating systems.
           </p>
         </motion.div>
 
