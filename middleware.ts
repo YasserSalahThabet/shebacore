@@ -6,11 +6,12 @@ const USER_ENV = "SHEBACORE_ADMIN_USER";
 const PASSWORD_ENV = "SHEBACORE_ADMIN_PASSWORD";
 const LOGIN_PATH = "/admin-login";
 const LOGOUT_PATH = "/admin-logout";
+const ADMIN_API_PREFIX = "/api/admin";
 const SESSION_COOKIE = "shebacore_admin_session";
 const SESSION_MAX_AGE = 60 * 60 * 8;
 
 export const config = {
-  matcher: ["/admin", "/admin/:path*", "/admin-login", "/admin-logout"],
+  matcher: ["/admin", "/admin/:path*", "/admin-login", "/admin-logout", "/api/admin/:path*"],
 };
 
 function htmlResponse(html: string, status = 200) {
@@ -18,6 +19,16 @@ function htmlResponse(html: string, status = 200) {
     status,
     headers: {
       "Content-Type": "text/html; charset=utf-8",
+      "Cache-Control": "no-store",
+    },
+  });
+}
+
+function jsonResponse(payload: Record<string, unknown>, status = 200) {
+  return new Response(JSON.stringify(payload), {
+    status,
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
       "Cache-Control": "no-store",
     },
   });
@@ -120,14 +131,17 @@ function logout(request: Request) {
 }
 
 export default function middleware(request: Request) {
+  const url = new URL(request.url);
+  const isAdminApi = url.pathname.startsWith(ADMIN_API_PREFIX);
   const expectedUser = cleanEnvValue(process.env[USER_ENV]);
   const expectedPassword = cleanEnvValue(process.env[PASSWORD_ENV]);
 
   if (!expectedUser || !expectedPassword) {
-    return notConfigured();
+    return isAdminApi
+      ? jsonResponse({ error: "Admin authentication is not configured." }, 503)
+      : notConfigured();
   }
 
-  const url = new URL(request.url);
   const expectedToken = sessionToken(expectedUser, expectedPassword);
   const currentToken = getCookie(request, SESSION_COOKIE);
   const hasValidSession = Boolean(
@@ -167,6 +181,8 @@ export default function middleware(request: Request) {
   }
 
   if (!hasValidSession) {
-    return redirectToLogin(request);
+    return isAdminApi
+      ? jsonResponse({ error: "Unauthorized admin request." }, 401)
+      : redirectToLogin(request);
   }
 }
