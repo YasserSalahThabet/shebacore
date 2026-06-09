@@ -52,7 +52,7 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8 ml-12">
+          <div className="hidden lg:flex items-center gap-6 ml-8">
             {navigation.map((item) =>
               item.external ? (
                 <a
@@ -81,7 +81,7 @@ export function Header() {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <Button variant="hero" size="lg" asChild>
               <a href={CALENDAR_URL} target="_blank" rel="noopener noreferrer">Book Call</a>
             </Button>
@@ -89,7 +89,7 @@ export function Header() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-foreground"
+            className="lg:hidden p-2 text-foreground"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -99,7 +99,7 @@ export function Header() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-background border-b border-border shadow-lg animate-fade-in">
+          <div className="lg:hidden absolute top-full left-0 right-0 bg-background border-b border-border shadow-lg animate-fade-in">
             <div className="flex flex-col gap-4 px-6 py-6">
               {navigation.map((item) =>
                 item.external ? (
