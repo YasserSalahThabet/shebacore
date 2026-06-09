@@ -85,7 +85,7 @@ export function HeroSection() {
               <span>Now Operating in KSA</span>
             </div>
             <div className="flex flex-wrap justify-center gap-8 opacity-50">
-              {["Healthcare", "Retail", "Logistics", "Hospitality", "Public Sector"].map(
+              {["Healthcare", "Retail", "Logistics", "Hospitality", "Public Sector", "Travel Agencies", "Accountants"].map(
                 (industry) => (
                   <span
                     key={industry}
