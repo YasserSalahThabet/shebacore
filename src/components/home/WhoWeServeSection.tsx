@@ -1,30 +1,11 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import {
-  Building2,
-  Store,
-  Truck,
-  Stethoscope,
-  Hotel,
-  Landmark,
-  Plane,
-  Calculator,
-} from "lucide-react";
+import { Building2, Store } from "lucide-react";
 
 const segments = [
   { icon: Building2, name: "Small & Medium Businesses", description: "Growing companies ready to scale" },
   { icon: Building2, name: "Enterprise Organizations", description: "Fortune 500 and large corporations" },
   { icon: Store, name: "Multi-Location Businesses", description: "Retail chains and franchises" },
-];
-
-const industries = [
-  { icon: Stethoscope, name: "Healthcare" },
-  { icon: Store, name: "Retail" },
-  { icon: Truck, name: "Logistics" },
-  { icon: Hotel, name: "Hospitality" },
-  { icon: Landmark, name: "Public Sector" },
-  { icon: Plane, name: "Travel Agencies" },
-  { icon: Calculator, name: "Accountants" },
 ];
 
 export function WhoWeServeSection() {
@@ -50,7 +31,7 @@ export function WhoWeServeSection() {
         </motion.div>
 
         {/* Business Segments */}
-        <div className="grid md:grid-cols-3 gap-5 mb-10">
+        <div className="grid md:grid-cols-3 gap-5">
           {segments.map((segment, index) => (
             <motion.div
               key={segment.name}
@@ -69,29 +50,6 @@ export function WhoWeServeSection() {
             </motion.div>
           ))}
         </div>
-
-        {/* Industries */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-center"
-        >
-          <h3 className="text-xl font-semibold text-foreground mb-6">
-            Industries We Specialize In
-          </h3>
-          <div className="flex flex-wrap justify-center gap-3">
-            {industries.map((industry) => (
-              <div
-                key={industry.name}
-                className="flex items-center gap-3 px-5 py-3 rounded-full bg-secondary/50 border border-border hover:border-primary/30 transition-colors"
-              >
-                <industry.icon className="w-5 h-5 text-primary" />
-                <span className="text-foreground font-medium">{industry.name}</span>
-              </div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );
