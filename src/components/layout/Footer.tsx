@@ -11,7 +11,7 @@ const footerLinks = {
     { name: "Cybersecurity", href: "/solutions#cybersecurity" },
     { name: "Cloud Services", href: "/solutions#cloud" },
     { name: "Networking", href: "/solutions#networking" },
-    { name: "Customer Experience", href: "/solutions#cx" },
+    { name: "AI & Automation", href: "/solutions#ai" },
   ],
   legal: [
     { name: "Privacy Policy", href: "/privacy" },
@@ -22,31 +22,37 @@ const footerLinks = {
 export function Footer() {
   return (
     <footer className="bg-card border-t border-border">
-      <div className="section-container py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="section-container py-12 md:py-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-xl">S</span>
+            <Link to="/" className="flex items-center gap-2 mb-5">
+              <div className="w-8 h-8 relative">
+                <img
+                  src="/logo-hexagon.png?v=2"
+                  alt="ShebaCore hexagon logo"
+                  className="w-full h-full object-contain"
+                />
               </div>
               <span className="text-xl font-bold text-foreground">
                 Sheba<span className="text-primary">Core</span>
               </span>
             </Link>
             <p className="text-muted-foreground text-sm mb-6">
-              Your trusted technology partner. Simplifying enterprise solutions with zero upfront consulting cost.
+              Technology, AI, security, and operations guidance built around a stronger business core.
             </p>
             <div className="flex gap-4">
               <a
                 href="#"
                 className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-secondary/80 transition-all"
+                aria-label="LinkedIn"
               >
                 <Linkedin size={18} />
               </a>
               <a
                 href="#"
                 className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-secondary/80 transition-all"
+                aria-label="Twitter"
               >
                 <Twitter size={18} />
               </a>
@@ -103,7 +109,7 @@ export function Footer() {
                 <MapPin size={16} className="text-primary mt-0.5" />
                 <div className="flex flex-col">
                   <span>United States</span>
-                  <span className="text-xs text-muted-foreground/70">Operating in Middle East • KSA Office</span>
+                  <span className="text-xs text-muted-foreground/70">Operating in the Middle East • KSA Office</span>
                 </div>
               </li>
             </ul>
@@ -111,7 +117,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="mt-10 pt-6 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-sm">
             © {new Date().getFullYear()} ShebaCore. All rights reserved.
           </p>
