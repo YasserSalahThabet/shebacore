@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 
 const CALENDAR_URL = "https://cal.com/shebacore/discovery-call-shebacore";
+const CONTACT_EMAIL = "info@shebacore.com";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -26,19 +27,30 @@ const Contact = () => {
     message: "",
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const subject = encodeURIComponent(`ShebaCore inquiry from ${formData.name}`);
+    const body = encodeURIComponent(
+      [
+        `Name: ${formData.name}`,
+        `Email: ${formData.email}`,
+        `Company: ${formData.company || "Not provided"}`,
+        `Phone: ${formData.phone || "Not provided"}`,
+        "",
+        "Message:",
+        formData.message,
+      ].join("\n")
+    );
+
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
 
     toast({
-      title: "Message sent!",
-      description: "We'll get back to you within 24 hours.",
+      title: "Email draft opened",
+      description: "Your email app should open with the message ready to send.",
     });
 
-    setFormData({ name: "", email: "", company: "", phone: "", message: "" });
     setIsSubmitting(false);
   };
 
@@ -155,10 +167,10 @@ const Contact = () => {
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
-                    "Sending..."
+                    "Opening email..."
                   ) : (
                     <>
-                      Send Message
+                      Open Email Draft
                       <Send size={18} />
                     </>
                   )}
@@ -205,7 +217,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground">Email</p>
-                      <a href="mailto:info@shebacore.com" className="text-foreground hover:text-primary transition-colors">info@shebacore.com</a>
+                      <a href={`mailto:${CONTACT_EMAIL}`} className="text-foreground hover:text-primary transition-colors">{CONTACT_EMAIL}</a>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
