@@ -29,7 +29,7 @@ function AnimatedCounter({ target, suffix, isInView }: { target: number; suffix:
   }, [isInView, target]);
 
   return (
-    <span className="text-4xl md:text-5xl font-bold text-primary">
+    <span className="text-3xl font-bold text-primary md:text-4xl">
       {suffix === "$" ? `${suffix}${count}` : `${count}${suffix}`}
     </span>
   );
@@ -40,9 +40,9 @@ export function StatsSection() {
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
-    <section className="py-10 md:py-14 border-y border-border/30 bg-card/30">
+    <section className="border-y border-border/30 bg-card/30 py-8 md:py-10">
       <div className="section-container" ref={ref}>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+        <div className="grid grid-cols-2 gap-5 md:grid-cols-4 md:gap-6">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
@@ -52,7 +52,7 @@ export function StatsSection() {
               className="text-center"
             >
               <AnimatedCounter target={stat.value} suffix={stat.suffix} isInView={isInView} />
-              <p className="text-sm text-muted-foreground mt-2">{stat.label}</p>
+              <p className="mt-1.5 text-sm text-muted-foreground">{stat.label}</p>
             </motion.div>
           ))}
         </div>
