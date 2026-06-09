@@ -28,16 +28,16 @@ export function WhatWeDoSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-16 md:py-20 bg-card/50">
+    <section className="bg-card/50 py-14 md:py-16">
       <div className="section-container" ref={ref}>
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="max-w-3xl mx-auto text-center mb-10"
+          className="mx-auto mb-8 max-w-3xl text-center"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <h2 className="mb-3 text-3xl font-bold text-foreground md:text-4xl lg:text-5xl">
             What We <span className="text-primary">Build</span>
           </h2>
           <p className="text-lg text-muted-foreground">
@@ -46,19 +46,19 @@ export function WhatWeDoSection() {
         </motion.div>
 
         {/* Features Grid */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid gap-5 md:grid-cols-3">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="glass-card p-6 group hover:border-primary/30 hover:-translate-y-1 transition-all duration-300"
+              className="glass-card group p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30"
             >
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
-                <feature.icon className="w-6 h-6 text-primary" />
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 transition-all duration-300 group-hover:scale-105 group-hover:bg-primary/20">
+                <feature.icon className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-3">
+              <h3 className="mb-2 text-xl font-semibold text-foreground">
                 {feature.title}
               </h3>
               <p className="text-muted-foreground">{feature.description}</p>
