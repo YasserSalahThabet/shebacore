@@ -26,7 +26,7 @@ export function WhyShebaCore() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-24 md:py-32 bg-background relative overflow-hidden">
+    <section className="py-16 md:py-24 bg-background relative overflow-hidden">
       {/* Background Glow */}
       <motion.div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl"
@@ -35,21 +35,21 @@ export function WhyShebaCore() {
       />
 
       <div className="section-container relative z-10" ref={ref}>
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
           {/* Content */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
               Why <span className="text-primary">ShebaCore?</span>
             </h2>
-            <p className="text-lg text-muted-foreground mb-10">
+            <p className="text-lg text-muted-foreground mb-8">
               We're not just another technology consultant. We're your strategic partner in navigating the complex technology landscape.
             </p>
 
-            <div className="space-y-6">
+            <div className="space-y-5">
               {benefits.map((benefit, index) => (
                 <motion.div
                   key={benefit.title}
@@ -79,9 +79,9 @@ export function WhyShebaCore() {
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="glass-card p-8 md:p-12"
+            className="glass-card p-6 md:p-8"
           >
-            <div className="grid grid-cols-2 gap-8">
+            <div className="grid grid-cols-2 gap-5">
               {[
                 { value: "200+", label: "Technology Partners" },
                 { value: "24/7", label: "Expert Support" },
@@ -93,7 +93,7 @@ export function WhyShebaCore() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={isInView ? { opacity: 1, scale: 1 } : {}}
                   transition={{ duration: 0.4, delay: 0.4 + i * 0.1 }}
-                  className="text-center p-6 rounded-xl bg-secondary/50"
+                  className="text-center p-5 rounded-xl bg-secondary/50"
                 >
                   <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
                     {stat.value}
