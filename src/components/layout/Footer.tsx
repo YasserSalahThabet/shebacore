@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin, Linkedin, Twitter } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 
 const footerLinks = {
   company: [
@@ -38,25 +38,9 @@ export function Footer() {
                 Sheba<span className="text-primary">Core</span>
               </span>
             </Link>
-            <p className="text-muted-foreground text-sm mb-6">
+            <p className="text-muted-foreground text-sm">
               Technology, AI, security, and operations guidance built around a stronger business core.
             </p>
-            <div className="flex gap-4">
-              <a
-                href="#"
-                className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-secondary/80 transition-all"
-                aria-label="LinkedIn"
-              >
-                <Linkedin size={18} />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-secondary/80 transition-all"
-                aria-label="Twitter"
-              >
-                <Twitter size={18} />
-              </a>
-            </div>
           </div>
 
           {/* Company Links */}
