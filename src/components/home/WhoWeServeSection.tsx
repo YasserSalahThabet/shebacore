@@ -32,14 +32,14 @@ export function WhoWeServeSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-16 md:py-24 bg-background">
+    <section className="pt-8 pb-16 md:pt-12 md:pb-20 bg-background">
       <div className="section-container" ref={ref}>
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="max-w-3xl mx-auto text-center mb-12"
+          className="max-w-3xl mx-auto text-center mb-10"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Who We <span className="text-primary">Serve</span>
@@ -50,7 +50,7 @@ export function WhoWeServeSection() {
         </motion.div>
 
         {/* Business Segments */}
-        <div className="grid md:grid-cols-3 gap-5 mb-12">
+        <div className="grid md:grid-cols-3 gap-5 mb-10">
           {segments.map((segment, index) => (
             <motion.div
               key={segment.name}
