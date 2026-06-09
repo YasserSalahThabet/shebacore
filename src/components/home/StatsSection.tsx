@@ -2,10 +2,10 @@ import { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
 
 const stats = [
-  { value: 50, suffix: "+", label: "Clients Served" },
-  { value: 14, suffix: "-Day", label: "Prototype Delivery" },
-  { value: 3, suffix: "x", label: "Average ROI Increase" },
-  { value: 98, suffix: "%", label: "Client Satisfaction" },
+  { value: 14, suffix: "-Day", label: "Prototype Sprint" },
+  { value: 200, suffix: "+", label: "Technology Partners" },
+  { value: 100, suffix: "%", label: "Vendor-Neutral" },
+  { value: 0, suffix: "$", label: "Upfront Consulting Cost" },
 ];
 
 function AnimatedCounter({ target, suffix, isInView }: { target: number; suffix: string; isInView: boolean }) {
@@ -15,7 +15,7 @@ function AnimatedCounter({ target, suffix, isInView }: { target: number; suffix:
     if (!isInView) return;
     let start = 0;
     const duration = 2000;
-    const increment = target / (duration / 16);
+    const increment = Math.max(target / (duration / 16), 1);
     const timer = setInterval(() => {
       start += increment;
       if (start >= target) {
@@ -30,7 +30,7 @@ function AnimatedCounter({ target, suffix, isInView }: { target: number; suffix:
 
   return (
     <span className="text-4xl md:text-5xl font-bold text-primary">
-      {count}{suffix}
+      {suffix === "$" ? `${suffix}${count}` : `${count}${suffix}`}
     </span>
   );
 }
@@ -40,7 +40,7 @@ export function StatsSection() {
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
-    <section className="py-12 md:py-16 border-y border-border/30 bg-card/30">
+    <section className="py-10 md:py-14 border-y border-border/30 bg-card/30">
       <div className="section-container" ref={ref}>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           {stats.map((stat, index) => (
