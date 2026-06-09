@@ -1,8 +1,28 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Calendar } from "lucide-react";
+import {
+  ArrowRight,
+  Calculator,
+  Calendar,
+  Hotel,
+  Landmark,
+  Plane,
+  Stethoscope,
+  Store,
+  Truck,
+} from "lucide-react";
 import { motion } from "framer-motion";
 import { HeroBackground } from "./HeroBackground";
+
+const industries = [
+  { icon: Stethoscope, name: "Healthcare" },
+  { icon: Store, name: "Retail" },
+  { icon: Truck, name: "Logistics" },
+  { icon: Hotel, name: "Hospitality" },
+  { icon: Landmark, name: "Public Sector" },
+  { icon: Plane, name: "Travel Agencies" },
+  { icon: Calculator, name: "Accountants" },
+];
 
 export function HeroSection() {
   return (
@@ -79,22 +99,24 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="mt-12 pt-6 border-t border-border/30"
           >
-            <div className="flex items-center justify-center gap-3 text-sm text-muted-foreground mb-4">
+            <div className="flex items-center justify-center gap-3 text-sm text-muted-foreground mb-5">
               <span>US Based</span>
               <span className="w-1 h-1 rounded-full bg-muted-foreground/40" />
               <span>Now Operating in KSA</span>
             </div>
-            <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 opacity-50">
-              {["Healthcare", "Retail", "Logistics", "Hospitality", "Public Sector", "Travel Agencies", "Accountants"].map(
-                (industry) => (
-                  <span
-                    key={industry}
-                    className="text-sm font-medium text-foreground/60"
-                  >
-                    {industry}
-                  </span>
-                )
-              )}
+            <h2 className="mb-4 text-base font-semibold text-foreground">
+              Industries We Specialize In
+            </h2>
+            <div className="flex flex-wrap justify-center gap-3">
+              {industries.map((industry) => (
+                <div
+                  key={industry.name}
+                  className="flex items-center gap-2 rounded-full border border-border/70 bg-secondary/40 px-4 py-2 text-sm font-medium text-foreground backdrop-blur transition-colors hover:border-primary/40"
+                >
+                  <industry.icon className="h-4 w-4 text-primary" />
+                  <span>{industry.name}</span>
+                </div>
+              ))}
             </div>
           </motion.div>
         </div>
