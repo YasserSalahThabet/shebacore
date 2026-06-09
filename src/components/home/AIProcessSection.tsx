@@ -34,10 +34,10 @@ export function AIProcessSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-24 md:py-32 bg-background relative overflow-hidden">
+    <section className="py-16 md:py-24 bg-background relative overflow-hidden">
       {/* Subtle floating accents */}
       <motion.div
-        className="absolute top-20 right-[5%] w-64 h-64 rounded-full bg-primary/5 blur-3xl"
+        className="absolute top-12 right-[5%] w-64 h-64 rounded-full bg-primary/5 blur-3xl"
         animate={{ y: [0, -20, 0] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
       />
@@ -48,9 +48,9 @@ export function AIProcessSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="max-w-3xl mx-auto text-center mb-20"
+          className="max-w-3xl mx-auto text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             How We <span className="text-primary">Transform</span> Your Business
           </h2>
           <p className="text-lg text-muted-foreground">
@@ -59,7 +59,7 @@ export function AIProcessSection() {
         </motion.div>
 
         {/* Steps */}
-        <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
           {steps.map((step, index) => (
             <motion.div
               key={step.title}
@@ -70,26 +70,26 @@ export function AIProcessSection() {
             >
               {/* Connection line (desktop) */}
               {index < steps.length - 1 && (
-                <div className="hidden md:block absolute top-16 left-[60%] right-[-40%] h-px bg-gradient-to-r from-border to-transparent" />
+                <div className="hidden md:block absolute top-14 left-[60%] right-[-40%] h-px bg-gradient-to-r from-border to-transparent" />
               )}
 
-              <div className="glass-card p-8 lg:p-10 hover:border-primary/30 transition-all duration-500 hover:-translate-y-2 relative overflow-hidden">
+              <div className="glass-card p-6 lg:p-8 hover:border-primary/30 transition-all duration-500 hover:-translate-y-2 relative overflow-hidden">
                 {/* Background gradient on hover */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${step.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
 
                 <div className="relative z-10">
                   {/* Step Number */}
-                  <span className="text-xs font-bold tracking-[0.2em] text-primary/60 uppercase mb-4 block">
+                  <span className="text-xs font-bold tracking-[0.2em] text-primary/60 uppercase mb-3 block">
                     Step {step.step}
                   </span>
 
                   {/* Icon */}
-                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
-                    <step.icon className="w-7 h-7 text-primary" />
+                  <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                    <step.icon className="w-6 h-6 text-primary" />
                   </div>
 
                   {/* Content */}
-                  <h3 className="text-2xl font-bold text-foreground mb-4">
+                  <h3 className="text-2xl font-bold text-foreground mb-3">
                     {step.title}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">
