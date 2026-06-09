@@ -4,20 +4,20 @@ import { Check } from "lucide-react";
 
 const benefits = [
   {
-    title: "Vendor-Neutral Recommendations",
-    description: "Unbiased guidance from 200+ technology providers to find your perfect fit.",
+    title: "Prototype Before You Commit",
+    description: "Validate the workflow with a working proof of value before investing in a full rollout.",
   },
   {
-    title: "Access to Top US & Global Providers",
-    description: "Leverage our partnerships with industry-leading technology vendors worldwide.",
+    title: "AI + Infrastructure Thinking",
+    description: "We connect automation ideas with the systems, data, security, and vendors needed to support them.",
   },
   {
-    title: "Scalable Solutions for SMB & Enterprise",
-    description: "Whether you're a startup or Fortune 500, we design solutions that grow with you.",
+    title: "Vendor-Neutral Roadmaps",
+    description: "Recommendations are based on fit, budget, risk, and operational value, not a single vendor agenda.",
   },
   {
-    title: "Trusted Advisor Model",
-    description: "We act as your long-term technology partner, not just a one-time vendor.",
+    title: "One Operating View",
+    description: "The goal is not more tools. The goal is a clearer system your team can run and measure.",
   },
 ];
 
@@ -46,7 +46,7 @@ export function WhyShebaCore() {
               Why <span className="text-primary">ShebaCore?</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              We're not just another technology consultant. We're your strategic partner in navigating the complex technology landscape.
+              We combine the clarity of a SaaS operating model with the flexibility of vendor-neutral technology delivery.
             </p>
 
             <div className="space-y-5">
@@ -83,10 +83,10 @@ export function WhyShebaCore() {
           >
             <div className="grid grid-cols-2 gap-5">
               {[
-                { value: "200+", label: "Technology Partners" },
-                { value: "24/7", label: "Expert Support" },
-                { value: "14", label: "Day Prototypes" },
-                { value: "100%", label: "Vendor-Neutral" },
+                { value: "01", label: "Workflow Map" },
+                { value: "02", label: "Technology Stack" },
+                { value: "03", label: "AI Prototype" },
+                { value: "04", label: "Rollout Plan" },
               ].map((stat, i) => (
                 <motion.div
                   key={stat.label}
