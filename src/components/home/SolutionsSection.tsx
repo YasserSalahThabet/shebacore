@@ -5,7 +5,6 @@ import {
   ShieldCheck,
   Cloud,
   Brain,
-  ArrowRight,
   BarChart3,
 } from "lucide-react";
 
@@ -69,19 +68,20 @@ export function SolutionsSection() {
             >
               <Link
                 to={capability.href}
-                className="glass-card group block h-full p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30"
+                className="glass-card group relative block h-full min-h-44 overflow-hidden p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30"
+                aria-label={`${capability.title}: ${capability.description}`}
               >
-                <div className="mb-3.5 flex h-11 w-11 items-center justify-center rounded-lg bg-primary/10 transition-all duration-300 group-hover:bg-primary/20">
-                  <capability.icon className="h-5 w-5 text-primary" />
-                </div>
-                <h3 className="mb-2 text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
-                  {capability.title}
-                </h3>
-                <p className="mb-4 text-sm leading-6 text-muted-foreground">
-                  {capability.description}
-                </p>
-                <div className="flex items-center gap-2 text-sm font-medium text-primary">
-                  View details <ArrowRight size={14} />
+                <div className="absolute inset-x-0 bottom-0 h-24 translate-y-6 bg-gradient-to-t from-primary/10 to-transparent opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100" />
+                <div className="relative z-10 flex h-full flex-col">
+                  <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg bg-primary/10 transition-all duration-300 group-hover:bg-primary/20">
+                    <capability.icon className="h-5 w-5 text-primary" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
+                    {capability.title}
+                  </h3>
+                  <p className="mt-4 text-sm leading-6 text-muted-foreground transition-all duration-300 md:max-h-0 md:overflow-hidden md:opacity-0 md:group-hover:max-h-32 md:group-hover:opacity-100">
+                    {capability.description}
+                  </p>
                 </div>
               </Link>
             </motion.div>
