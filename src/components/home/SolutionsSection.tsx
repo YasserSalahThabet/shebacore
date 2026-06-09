@@ -83,7 +83,7 @@ export function SolutionsSection() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="bg-card/50 pt-6 pb-14 md:pt-8 md:pb-16">
+    <section className="bg-card/50 pt-2 pb-14 md:pt-4 md:pb-14">
       <div className="section-container" ref={ref}>
         {/* Section Header */}
         <motion.div
