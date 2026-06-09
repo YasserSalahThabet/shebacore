@@ -17,64 +17,64 @@ import {
 
 const solutions = [
   {
+    icon: Brain,
+    title: "AI, Automation & Analytics",
+    description: "AI agents, workflow automation, dashboards, and prototypes for high-impact use cases.",
+    href: "/solutions#ai",
+  },
+  {
     icon: ShieldCheck,
     title: "Cybersecurity & Compliance",
-    description: "Protect your business with enterprise-grade security, threat detection, and regulatory compliance solutions.",
+    description: "Security controls, monitoring, endpoint protection, and compliance readiness.",
     href: "/solutions#cybersecurity",
   },
   {
     icon: Cloud,
     title: "Cloud & Managed IT Services",
-    description: "Scale effortlessly with cloud infrastructure, managed services, and IT operations support.",
+    description: "Cloud planning, migration, managed IT, backup, monitoring, and support.",
     href: "/solutions#cloud",
   },
   {
     icon: Wifi,
     title: "Advanced Networking & Managed Wi-Fi",
-    description: "Build reliable, high-performance networks with SD-WAN, managed Wi-Fi, and connectivity solutions.",
+    description: "Reliable connectivity, SD-WAN, managed Wi-Fi, optimization, and network security.",
     href: "/solutions#networking",
   },
   {
     icon: Headphones,
     title: "Customer Experience",
-    description: "Elevate customer interactions with VoIP, contact centers, CRM integrations, and omnichannel solutions.",
+    description: "Modern communication, contact center, CRM, and AI-powered customer support flows.",
     href: "/solutions#cx",
-  },
-  {
-    icon: Smartphone,
-    title: "Mobility & Device Management",
-    description: "Enable your mobile workforce with MDM, EMM, and secure device management solutions.",
-    href: "/solutions#mobility",
-  },
-  {
-    icon: Brain,
-    title: "AI, Automation & Analytics",
-    description: "Unlock insights and efficiency with AI-powered automation, data analytics, and machine learning.",
-    href: "/solutions#ai",
-  },
-  {
-    icon: Radio,
-    title: "IoT & Smart Infrastructure",
-    description: "Connect your physical assets with IoT sensors, surveillance systems, and smart building technology.",
-    href: "/solutions#iot",
-  },
-  {
-    icon: ArrowRightLeft,
-    title: "Migration & Onboarding",
-    description: "Seamlessly transition to new platforms with expert-led migrations and structured onboarding programs.",
-    href: "/solutions#migration",
   },
   {
     icon: BarChart3,
     title: "Insights & Reporting",
-    description: "Turn data into action with dashboards, analytics, and custom reporting tailored to your business.",
+    description: "Executive dashboards, KPI tracking, real-time analytics, and automated reporting.",
     href: "/solutions#insights",
+  },
+  {
+    icon: ArrowRightLeft,
+    title: "Migration & Onboarding",
+    description: "Platform moves, data validation, training, documentation, and change support.",
+    href: "/solutions#migration",
   },
   {
     icon: ShoppingCart,
     title: "eCommerce",
-    description: "Launch and scale your online store with integrated payment, inventory, and fulfillment solutions.",
+    description: "Payments, inventory, fulfillment, shipping, and customer journey optimization.",
     href: "/solutions#ecommerce",
+  },
+  {
+    icon: Smartphone,
+    title: "Mobility & Device Management",
+    description: "MDM, mobile security, app management, BYOD, and remote-work enablement.",
+    href: "/solutions#mobility",
+  },
+  {
+    icon: Radio,
+    title: "IoT & Smart Infrastructure",
+    description: "Sensors, surveillance, access control, asset tracking, and smart building systems.",
+    href: "/solutions#iot",
   },
 ];
 
@@ -93,10 +93,10 @@ export function SolutionsSection() {
           className="max-w-3xl mx-auto text-center mb-10"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Solutions We <span className="text-primary">Offer</span>
+            Capability <span className="text-primary">Modules</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            From cybersecurity to AI, we provide access to best-in-class technology solutions tailored to your business needs.
+            Pick the module that matches the problem, then connect it into one practical roadmap.
           </p>
         </motion.div>
 
@@ -123,7 +123,7 @@ export function SolutionsSection() {
                   {solution.description}
                 </p>
                 <div className="flex items-center gap-2 text-primary text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-                  Learn more <ArrowRight size={14} />
+                  View module <ArrowRight size={14} />
                 </div>
               </Link>
             </motion.div>
