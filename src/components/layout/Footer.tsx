@@ -90,11 +90,23 @@ export function Footer() {
                   info@shebacore.com
                 </a>
               </li>
-              <li className="flex items-center gap-3 text-sm text-muted-foreground">
-                <Phone size={16} className="text-primary" />
-                <a href="tel:+17603634466" className="transition-colors hover:text-primary">
-                  +1 (760) 363-4466
-                </a>
+              <li className="flex items-start gap-3 text-sm text-muted-foreground">
+                <Phone size={16} className="mt-0.5 text-primary" />
+                <div className="flex flex-col">
+                  <a href="tel:+966533588388" className="transition-colors hover:text-primary">
+                    +966 53 358 8388
+                  </a>
+                  <span className="text-xs text-muted-foreground/70">KSA calls</span>
+                </div>
+              </li>
+              <li className="flex items-start gap-3 text-sm text-muted-foreground">
+                <Phone size={16} className="mt-0.5 text-primary" />
+                <div className="flex flex-col">
+                  <a href="tel:+17603634466" className="transition-colors hover:text-primary">
+                    +1 (760) 363-4466
+                  </a>
+                  <span className="text-xs text-muted-foreground/70">US / WhatsApp</span>
+                </div>
               </li>
               <li className="flex items-start gap-3 text-sm text-muted-foreground">
                 <MapPin size={16} className="mt-0.5 text-primary" />
