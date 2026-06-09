@@ -26,43 +26,43 @@ export function WhyShebaCore() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="pt-8 pb-16 md:pt-12 md:pb-20 bg-background relative overflow-hidden">
+    <section className="relative overflow-hidden bg-background pt-6 pb-14 md:pt-8 md:pb-16">
       {/* Background Glow */}
       <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl"
+        className="absolute top-1/2 left-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/5 blur-3xl"
         animate={{ scale: [1, 1.1, 1] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
 
       <div className="section-container relative z-10" ref={ref}>
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-10">
           {/* Content */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+            <h2 className="mb-3 text-3xl font-bold text-foreground md:text-4xl lg:text-5xl">
               Why <span className="text-primary">ShebaCore?</span>
             </h2>
-            <p className="text-lg text-muted-foreground mb-8">
+            <p className="mb-6 text-lg text-muted-foreground">
               We combine the clarity of a SaaS operating model with the flexibility of vendor-neutral technology delivery.
             </p>
 
-            <div className="space-y-5">
+            <div className="space-y-4">
               {benefits.map((benefit, index) => (
                 <motion.div
                   key={benefit.title}
                   initial={{ opacity: 0, x: -20 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
-                  className="flex gap-4 group"
+                  className="group flex gap-4"
                 >
-                  <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                    <Check className="w-4 h-4 text-primary" />
+                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10 transition-colors group-hover:bg-primary/20">
+                    <Check className="h-4 w-4 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground mb-1">
+                    <h4 className="mb-1 font-semibold text-foreground">
                       {benefit.title}
                     </h4>
                     <p className="text-sm text-muted-foreground">
@@ -79,9 +79,9 @@ export function WhyShebaCore() {
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="glass-card p-6 md:p-8"
+            className="glass-card p-5 md:p-6"
           >
-            <div className="grid grid-cols-2 gap-5">
+            <div className="grid grid-cols-2 gap-4">
               {[
                 { value: "01", label: "Workflow Map" },
                 { value: "02", label: "Technology Stack" },
@@ -93,9 +93,9 @@ export function WhyShebaCore() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={isInView ? { opacity: 1, scale: 1 } : {}}
                   transition={{ duration: 0.4, delay: 0.4 + i * 0.1 }}
-                  className="text-center p-5 rounded-xl bg-secondary/50"
+                  className="rounded-xl bg-secondary/50 p-4 text-center"
                 >
-                  <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
+                  <div className="mb-1.5 text-3xl font-bold text-primary md:text-4xl">
                     {stat.value}
                   </div>
                   <div className="text-sm text-muted-foreground">{stat.label}</div>
