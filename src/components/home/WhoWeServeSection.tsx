@@ -13,7 +13,7 @@ export function WhoWeServeSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="bg-background pt-6 pb-14 md:pt-8 md:pb-16">
+    <section className="bg-background pt-0 pb-14 md:pt-2 md:pb-16">
       <div className="section-container" ref={ref}>
         {/* Section Header */}
         <motion.div
