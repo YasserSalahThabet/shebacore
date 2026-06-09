@@ -225,7 +225,16 @@ const Contact = () => {
                       <Phone className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground">Phone / WhatsApp</p>
+                      <p className="text-sm text-muted-foreground">KSA calls</p>
+                      <a href="tel:+966533588388" className="text-foreground hover:text-primary transition-colors">+966 53 358 8388</a>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                      <Phone className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">US / WhatsApp</p>
                       <a href="tel:+17603634466" className="text-foreground hover:text-primary transition-colors">+1 (760) 363-4466</a>
                     </div>
                   </div>
@@ -235,8 +244,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground">Location</p>
-                      <p className="text-foreground">United States</p>
-                      <p className="text-sm text-muted-foreground">Operating in the Middle East • KSA Office</p>
+                      <p className="text-foreground">United States and KSA</p>
+                      <p className="text-sm text-muted-foreground">Serving Saudi Arabia and the Middle East</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
@@ -246,7 +255,7 @@ const Contact = () => {
                     <div>
                       <p className="text-sm text-muted-foreground">Hours</p>
                       <p className="text-foreground">
-                        Mon-Fri: 9AM-6PM EST
+                        Mon-Fri: 9AM-6PM KSA / EST
                       </p>
                     </div>
                   </div>
