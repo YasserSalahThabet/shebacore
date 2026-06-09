@@ -26,7 +26,7 @@ export function WhyShebaCore() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-16 md:py-24 bg-background relative overflow-hidden">
+    <section className="pt-8 pb-16 md:pt-12 md:pb-20 bg-background relative overflow-hidden">
       {/* Background Glow */}
       <motion.div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl"
