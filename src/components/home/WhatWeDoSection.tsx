@@ -28,7 +28,7 @@ export function WhatWeDoSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="bg-card/50 py-14 md:py-16">
+    <section className="bg-card/50 pt-10 pb-8 md:pt-12 md:pb-10">
       <div className="section-container" ref={ref}>
         {/* Section Header */}
         <motion.div
