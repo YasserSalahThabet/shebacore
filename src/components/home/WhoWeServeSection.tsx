@@ -1,10 +1,10 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Building2, Store, BriefcaseBusiness } from "lucide-react";
+import { Building2, Store, Briefcase } from "lucide-react";
 
 const segments = [
   { icon: Building2, name: "Growing Businesses", description: "Teams that need better systems without adding operational complexity" },
-  { icon: BriefcaseBusiness, name: "Service Operators", description: "Consultancies, agencies, accountants, and professional service teams" },
+  { icon: Briefcase, name: "Service Operators", description: "Consultancies, agencies, accountants, and professional service teams" },
   { icon: Store, name: "Multi-Location Teams", description: "Retail, hospitality, travel, and distributed teams that need consistency" },
 ];
 
